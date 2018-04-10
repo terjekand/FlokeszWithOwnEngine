@@ -11,12 +11,12 @@
 
     <name>Flokesz</name>
     <description></description>
-    <url>https://github.com/</url>
+    <url>https://github.com/kissdavid0506/FlokeszWithOwnEngine</url>
 
     <!-- https://maven.apache.org/pom.html#Organization -->
     <organization>
         <name>Kiss Dávid</name>
-        <url>https://github.com/</url>
+        <url>https://github.com/kissdavid0506/</url>
     </organization>
     <inceptionYear>2018</inceptionYear>
 
@@ -30,9 +30,9 @@
 
     <!-- https://maven.apache.org/pom.html#SCM -->
     <scm>
-        <connection>scm:git:git@github.com:bbalint012/MovieStore.git</connection>
-        <url>scm:git:git@github.com:bbalint012/MovieStore.git</url>
-        <developerConnection>scm:git:git@github.com:bbalint012/MovieStore.git</developerConnection>
+        <connection>scm:git:git@github.com:kissdavid0506/FlokeszWithOwnEngine.git</connection>
+        <url>scm:git:git@github.com:kissdavid0506/FlokeszWithOwnEngine.git</url>
+        <developerConnection>scm:git:git@github.com:kissdavid0506/FlokeszWithOwnEngine.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
