@@ -31,8 +31,9 @@ public class Window{
         window.setTitle("TryOwnEngine");
         bg = new Pane();
         bg.setId("alap");
-        bg.getChildren().addAll(selectedImage, game.flokesz.player, game.flokesz.fegyver.weapon);
+        bg.getChildren().addAll(game.flokesz.player, game.flokesz.fegyver.weapon);
         scene = new Scene(bg, 1920, 1080);
+        scene.getStylesheets().addAll(this.getClass().getResource("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/style.css").toExternalForm());
         window.show();
         window.setFullScreen(true);
 
