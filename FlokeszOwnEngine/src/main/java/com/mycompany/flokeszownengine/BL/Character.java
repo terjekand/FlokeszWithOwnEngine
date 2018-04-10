@@ -13,6 +13,7 @@ public class Character {
     private float currHp, maxHp;
     boolean jobbra = true;
     boolean rest = true;
+    boolean rested = true;
     boolean hit = false;
     int Count_jobb = 0;
     int Count_bal= 0;
@@ -28,6 +29,7 @@ public class Character {
     boolean enterPressed = false;
     private int killCounter = 0;
     public int runStack;
+    public boolean jobbraMent = false, balraMent = false;
     Character(){
         try {
             image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif"));
@@ -61,39 +63,38 @@ public class Character {
         }
     }
     public void update(){
-            if(!rest){
-                if(jobbra){
-                    if(Count_jobb == 0){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_run_1.png");
-                    }
-                    else if(Count_jobb == 1){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_run_2.png");
-                    }
-                    else if(Count_jobb == 2){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_run_3.png");
-                    }
-                    else{
-                        Count_jobb = 0;
-                    }
+        if(!rest){
+            if(jobbra){
+                    rested = false;
+                    balraMent = false;
+                    if(!jobbraMent)
+                        setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/run/flokesz_run.gif");
+                    player.setImage(image1);
                 }
 
                 else{
-                    if(Count_bal == 0){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_R_run_1.png");
-                    }
-                    else if(Count_bal == 1){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_R_run_2.png");
-                    }
-                    else if(Count_bal == 2){
-                        setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/run/flokesz_R_run_3.png");
-                    }
-                    else{
-                        Count_bal = 0;
-                    }
+                rested = false;
+                jobbraMent = false;
+                if(!balraMent)
+                   setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/run/flokesz_run_R.gif");
+                   player.setImage(image1);
                 }
             }
-            else
-                 setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif");
-        player.setImage(image1);
+        else{
+            if(!rested){
+                jobbraMent = false;
+                balraMent = false;
+                rested = true;
+                if(jobbra)
+                    setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif");
+                else
+                    setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz_R.gif");
+                player.setImage(image1);
+            }
+            
+        }
+        }
+                
+        
      }
-}
+

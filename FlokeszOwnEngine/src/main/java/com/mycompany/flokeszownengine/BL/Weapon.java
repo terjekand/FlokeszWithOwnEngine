@@ -37,11 +37,12 @@ public class Weapon {
         return x;
     }
 
-    public void hit(int i){
-        hit_poz++;
-        weapon.setTranslateZ(i);
-        if(hit_poz > 3)
-            hit_poz = 0;
+    public void hitR(){
+        weapon.setRotate(90);
+    }
+    public void hitL(){
+        
+        weapon.setRotate(-90); 
     }
 
     public void revHit(int i){

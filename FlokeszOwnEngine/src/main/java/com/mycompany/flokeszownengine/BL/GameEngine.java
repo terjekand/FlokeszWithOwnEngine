@@ -30,6 +30,7 @@ public class GameEngine {
                 ablak.update();
                 //input.A_Key = input.D_Key = false;
                 ablak.getScene().setOnKeyPressed(input.keyEventHandler);
+                ablak.getScene().setOnKeyReleased(input.keyEventHandler);
                 flokesz.rest = true;
                 flokesz.Count_rest++;
 
