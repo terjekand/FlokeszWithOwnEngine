@@ -22,7 +22,7 @@ public class Window{
         selectedImage = new ImageView();
         image1 = null;
         try {
-            image1 = new Image(new FileInputStream("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/bg/menu/menu_bg.png"));
+            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/bg/menu/menu_bg.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

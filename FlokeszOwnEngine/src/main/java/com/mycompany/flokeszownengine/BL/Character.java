@@ -30,7 +30,7 @@ public class Character {
     public int runStack;
     Character(){
         try {
-            image1 = new Image(new FileInputStream("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/rest/flokesz_1.png"));
+            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -92,18 +92,8 @@ public class Character {
                     }
                 }
             }
-            else{
-                if(Count_rest < 50){
-                    setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/rest/flokesz_1.png");
-                }
-                else if(Count_rest < 100){
-                    setImg("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/rest/flokesz_2.png");
-                }
-                else{
-                    Count_rest = 0;
-                }
-
-            }
+            else
+                 setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif");
         player.setImage(image1);
      }
 }

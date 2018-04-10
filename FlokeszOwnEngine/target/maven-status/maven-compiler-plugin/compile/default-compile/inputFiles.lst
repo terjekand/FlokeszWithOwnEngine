@@ -1,7 +1,7 @@
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/UI/Window.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Menu.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Input.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Character.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/GameEngine.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/Main.java
-/home/kiss/NetBeansProjects/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Weapon.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Menu.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Character.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Input.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/UI/Window.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/Weapon.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/BL/GameEngine.java
+/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/java/com/mycompany/flokeszownengine/Main.java
