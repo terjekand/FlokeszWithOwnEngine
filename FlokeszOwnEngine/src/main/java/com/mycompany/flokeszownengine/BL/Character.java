@@ -3,9 +3,6 @@ package com.mycompany.flokeszownengine.BL;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 public class Character {
     public ImageView player = new ImageView();
     Image image1 = null;
