@@ -21,11 +21,7 @@ public class Character {
     public boolean jobbraMent = false, balraMent = false;
     boolean pass = false;
     Character(){
-        try {
-            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        image1 = new Image(getClass().getClassLoader().getResource("Flokesz/run/flokesz_run.gif").toString());
         player.setImage(image1);
         player.setX(100);
         player.setY(600);
