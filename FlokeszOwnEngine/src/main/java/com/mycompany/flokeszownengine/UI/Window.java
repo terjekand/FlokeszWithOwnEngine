@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+import com.mycompany.flokeszownengine.BL.Character;
+import com.mycompany.flokeszownengine.BL.Stage1;
 
 public class Window{
     private Stage window;
@@ -41,8 +42,14 @@ public class Window{
     public Scene getScene() {
         return scene;
     }
+    public Pane getBg(){
+        return bg;
+    }
 
-    public void update(){
+    public void setView(Image image){
+        selectedImage.setImage(image);
+    }
+    public void update(Character flokesz){
         window.setScene(scene);
 
 

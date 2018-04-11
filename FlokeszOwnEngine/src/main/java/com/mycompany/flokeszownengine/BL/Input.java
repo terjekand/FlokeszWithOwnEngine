@@ -11,10 +11,9 @@ public class Input {
     Input(Character flokesz){
         this.flokesz = flokesz;
     }
-    final EventHandler<KeyEvent> keyEventHandler =
-            keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.SPACE) {
-                if(flokesz.jobbra){
+    
+    private void doHitAction(){
+        if(flokesz.jobbra){
                     if(i == 0){
                         flokesz.fegyver.hitR();
                         i++;
@@ -37,19 +36,35 @@ public class Input {
                         i = 0;
                     }  
                 }
-            }
-            if (keyEvent.getCode() == KeyCode.A) {
-                flokesz.setX(flokesz.getX() - 10);
+    }
+    private void applyRightMovement(){
+                flokesz.setX(flokesz.getX() - 15);
                 flokesz.jobbra = false;
                 flokesz.rest = false;
+    }
+    private void applyLeftMovement(){
+                flokesz.setX(flokesz.getX() + 15);
+                flokesz.jobbra = true;
+                flokesz.rest = false;
+    }
+    final EventHandler<KeyEvent> keyEventHandler =
+            keyEvent -> {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                Menu menu = new Menu();
+                if(menu.isNearTheTable(flokesz))
+                    flokesz.setPass(true);
+            }
+            if (keyEvent.getCode() == KeyCode.SPACE) {
+                doHitAction();
+            }
+            if (keyEvent.getCode() == KeyCode.A) {
                 flokesz.fegyver.weapon.setRotate(0);
+                applyRightMovement();
 
             }
             if (keyEvent.getCode() == KeyCode.D) {
-                flokesz.setX(flokesz.getX() + 10);
-                flokesz.jobbra = true;
-                flokesz.rest = false;
                 flokesz.fegyver.weapon.setRotate(0);
+                applyLeftMovement();
 
             }
             if (keyEvent.getEventType() == KeyEvent.KEY_RELEASED){

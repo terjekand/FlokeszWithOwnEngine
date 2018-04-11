@@ -5,7 +5,7 @@ import javafx.animation.AnimationTimer;
 
 public class GameEngine {
     long startNanoTime;
-
+    Stage1 stage1;
     public Input getInput() {
         return input;
     }
@@ -15,6 +15,7 @@ public class GameEngine {
     public Character flokesz;
 
     public GameEngine(){
+        stage1 = new Stage1();
         flokesz = new Character();
         ablak = new Window(this);
         startNanoTime = System.nanoTime();
@@ -27,15 +28,19 @@ public class GameEngine {
             public void handle(long currentNanoTime) {
                 double t = (currentNanoTime - startNanoTime) / 1000000000.0;
                 flokesz.update();
-                ablak.update();
-                //input.A_Key = input.D_Key = false;
+                ablak.update(flokesz);
                 ablak.getScene().setOnKeyPressed(input.keyEventHandler);
                 ablak.getScene().setOnKeyReleased(input.keyEventHandler);
                 flokesz.rest = true;
-                flokesz.Count_rest++;
-
-
-
+                if(flokesz.getPass()){
+                    ablak.setView(stage1.getImage());
+                    flokesz.setPass(false);
+                    stage1.setRun(true);
+                    ablak.getBg().getChildren().add(stage1.getBear().getView());
+                }
+                if(stage1.getRun()){
+                    stage1.update(flokesz);
+                }
             }
         }.start();
 
