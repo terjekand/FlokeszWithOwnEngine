@@ -21,7 +21,7 @@ public class Character {
     public boolean jobbraMent = false, balraMent = false;
     boolean pass = false;
     Character(){
-        image1 = new Image(getClass().getClassLoader().getResource("Flokesz/run/flokesz_run.gif").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("Flokesz/rest/flokesz.gif").toString());
         player.setImage(image1);
         player.setX(100);
         player.setY(600);
