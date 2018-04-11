@@ -15,11 +15,8 @@ public class Weapon {
     public Weapon(double x) {
 
         image1 = null;
-        try {
-            image1 = new Image(new FileInputStream("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/weapon/boko.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            //image1 = new Image(new FileInputStream("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/weapon/boko.png"));
+        image1 = new Image(getClass().getClassLoader().getResource("weapon/boko.png").toString());
         weapon.setImage(image1);
         hit_poz = 0;
         hit_dist = new int[4];

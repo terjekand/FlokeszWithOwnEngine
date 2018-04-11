@@ -22,11 +22,7 @@ public class Window{
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
-        try {
-            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/bg/menu/menu_bg.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        image1 = new Image(getClass().getClassLoader().getResource("bg/menu/menu_bg.png").toString());
         selectedImage.setImage(image1);
         window = new Stage();
         window.setTitle("TryOwnEngine");

@@ -49,11 +49,7 @@ public class Character {
         return player.getX();
     }
     public void setImg(String img){
-        try {
-            image1 = new Image(new FileInputStream(img));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+       image1 = new Image(getClass().getClassLoader().getResource(img).toString());
     }
     public void update(){
         if(!rest){
@@ -61,7 +57,7 @@ public class Character {
                     rested = false;
                     balraMent = false;
                     if(!jobbraMent)
-                        setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/run/flokesz_run.gif");
+                        setImg("Flokesz/run/flokesz_run.gif");
                     player.setImage(image1);
                 }
 
@@ -69,7 +65,7 @@ public class Character {
                 rested = false;
                 jobbraMent = false;
                 if(!balraMent)
-                   setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/run/flokesz_run_R.gif");
+                   setImg("Flokesz/run/flokesz_run_R.gif");
                    player.setImage(image1);
                 }
             }
@@ -79,9 +75,9 @@ public class Character {
                 balraMent = false;
                 rested = true;
                 if(jobbra)
-                    setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz.gif");
+                    setImg("Flokesz/rest/flokesz.gif");
                 else
-                    setImg("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/Flokesz/rest/flokesz_R.gif");
+                    setImg("Flokesz/rest/flokesz_R.gif");
                 player.setImage(image1);
             }
             

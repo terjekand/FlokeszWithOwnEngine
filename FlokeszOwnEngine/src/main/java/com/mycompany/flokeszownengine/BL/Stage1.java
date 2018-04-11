@@ -30,11 +30,7 @@ public class Stage1 {
     boolean run = false;
     public Stage1(){
         bear = new Bear();
-        try {
-            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/bg/maps/1.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        image1 = new Image(getClass().getClassLoader().getResource("bg/maps/1.png").toString());
     }
     public Bear getBear(){
         return bear;

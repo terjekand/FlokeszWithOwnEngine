@@ -30,11 +30,7 @@ public class Bear {
     public Bear(){
         bear = new ImageView();
         image1 = null;
-        try {
-            image1 = new Image(new FileInputStream("/home/kiss/NetBeansProjects/FlokeszWithOwnEngine/FlokeszOwnEngine/src/main/resources/enemy/bear/bear_R.gif"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        image1 = new Image(getClass().getClassLoader().getResource("enemy/bear/bear_R.gif").toString());
         bear.setImage(image1);
         bear.setX(2300);
         bear.setY(500);
