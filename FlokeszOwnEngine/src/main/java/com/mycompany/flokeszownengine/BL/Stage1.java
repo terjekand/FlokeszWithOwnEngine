@@ -42,7 +42,7 @@ public class Stage1 {
         return image1;
     }
     public void update(Character flokesz){
-        bear.update();
+        bear.update(flokesz);
     }
     
 }

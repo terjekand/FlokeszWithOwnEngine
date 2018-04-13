@@ -33,10 +33,10 @@ public class Character {
     boolean rested = true;
     int backed = 0;
     public String map;
-    boolean enterPressed = false;
     private int killCounter = 0;
     public boolean jobbraMent = false, balraMent = false;
     boolean pass = false;
+    boolean utes = false;
     Character(){
         image1 = new Image(getClass().getClassLoader().getResource("Flokesz/rest/flokesz.gif").toString());
         player.setImage(image1);
@@ -48,8 +48,17 @@ public class Character {
         //TODO WEAPON
 
     }
+    public boolean getUtes(){
+        return utes;
+    }
+    public void setUtes(boolean x){
+        utes = x;
+    }
     public boolean getPass(){
         return pass;
+    }
+    public ImageView getPlayer(){
+        return player;
     }
     public void setPass(boolean x){
         pass = x;
@@ -58,13 +67,24 @@ public class Character {
         player.setX(x);
         fegyver.weapon.setX(x + 60);
     }
-    double getX(){
+    double getPoz(){
         return player.getX();
     }
     public void setImg(String img){
        image1 = new Image(getClass().getClassLoader().getResource(img).toString());
     }
+    public Image getImg(){
+        return image1;
+    }
+    public void setBacked(int x){
+        backed = x;
+    }
     public void update(){
+        if(backed > 0){
+                player.setX(player.getX() - 50);
+                fegyver.getWeapon().setX(fegyver.getWeapon().getX() - 50);
+            backed--;
+        }
         if(!rest){
             if(jobbra){
                     rested = false;

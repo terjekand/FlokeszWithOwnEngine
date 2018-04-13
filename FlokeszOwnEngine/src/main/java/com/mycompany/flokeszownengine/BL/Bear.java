@@ -15,11 +15,9 @@
  */
 package com.mycompany.flokeszownengine.BL;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import static java.lang.Math.abs;
 /**
  *
  * @author kiss
@@ -27,6 +25,7 @@ import javafx.scene.image.ImageView;
 public class Bear {
     Image image1;
     ImageView bear;
+    int knocked;
     public Bear(){
         bear = new ImageView();
         image1 = null;
@@ -34,6 +33,7 @@ public class Bear {
         bear.setImage(image1);
         bear.setX(2300);
         bear.setY(500);
+        knocked = 0;
     }
     public ImageView getView(){
         return bear;
@@ -41,7 +41,25 @@ public class Bear {
     public Image getImage(){
         return image1;
     }
-    public void update(){
-        bear.setX(bear.getX() - 2);
+    public double getPoz(){
+        return bear.getX();
+    }
+    private void back(){
+        bear.setX(bear.getX() + 50);
+        knocked--;
+    }
+    public void update(Character flokesz){
+        if(knocked == 0){
+            if((abs(flokesz.getPoz() + flokesz.getImg().getWidth() - bear.getX()) < 5) 
+            || (abs(flokesz.getPoz() + flokesz.getImg().getWidth() / 2 - bear.getX()) < 5)){
+            knocked = 8;
+            flokesz.setBacked(8);
+        }
+        else
+            bear.setX(bear.getX() - 2);
+        }
+        else
+            back();
+        
     }
 }

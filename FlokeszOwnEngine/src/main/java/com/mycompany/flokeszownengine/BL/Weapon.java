@@ -62,4 +62,7 @@ public class Weapon {
         hit_poz = -1;
         weapon.setTranslateZ(i);
     }
+    public ImageView getWeapon(){
+        return weapon;
+    }
 }

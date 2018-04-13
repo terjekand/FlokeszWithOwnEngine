@@ -56,12 +56,12 @@ public class Input {
                 }
     }
     private void applyRightMovement(){
-                flokesz.setX(flokesz.getX() - 15);
+                flokesz.setX(flokesz.getPoz() - 15);
                 flokesz.jobbra = false;
                 flokesz.rest = false;
     }
     private void applyLeftMovement(){
-                flokesz.setX(flokesz.getX() + 15);
+                flokesz.setX(flokesz.getPoz() + 15);
                 flokesz.jobbra = true;
                 flokesz.rest = false;
     }
