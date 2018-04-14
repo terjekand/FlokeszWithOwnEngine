@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import com.mycompany.flokeszownengine.BL.Character;
+import com.mycompany.flokeszownengine.BL.Res;
 /**
  *
  * @author kiss
@@ -33,7 +34,9 @@ public class Window{
     private String stageId;
     final ImageView selectedImage;
     Image image1;
+    Res res;
     public Window(GameEngine game){
+        res = new Res();
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
@@ -45,6 +48,7 @@ public class Window{
         bg.setId("alap");
         bg.getChildren().addAll(selectedImage, game.flokesz.player, game.flokesz.fegyver.weapon);
         scene = new Scene(bg, 1920, 1080);
+        window.setScene(res.getScene());
         window.show();
         //window.setFullScreen(true);
 
@@ -61,7 +65,13 @@ public class Window{
         selectedImage.setImage(image);
     }
     public void update(Character flokesz){
-        window.setScene(scene);
+        if(!res.getChoosed()){
+            window.setScene(res.getScene());
+        }
+        else{
+            window.setScene(scene);
+        }
+        
 
 
     }
