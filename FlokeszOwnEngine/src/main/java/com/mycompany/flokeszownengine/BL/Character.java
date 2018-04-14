@@ -45,7 +45,6 @@ public class Character {
         fegyver = new Weapon(130);
         map = "Menu";
         //TODO HP-BAR
-        //TODO WEAPON
 
     }
     public boolean getUtes(){
