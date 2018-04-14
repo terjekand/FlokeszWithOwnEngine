@@ -37,7 +37,7 @@ public class Window{
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
-        image1 = new Image(getClass().getClassLoader().getResource("bg/menu/menu_bg.png").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("fullhd/bg/menu/menu_bg.png").toString());
         selectedImage.setImage(image1);
         window = new Stage();
         window.setTitle("TryOwnEngine");

@@ -30,7 +30,9 @@ public class Bear {
     int bearPoz[];
     int actPoz;
     int speed;
+    int health;
     public Bear(){
+        health = 100;
         speed = -2;
         bearPoz = new int [2];
         bearPoz[0] = -300;
@@ -40,15 +42,21 @@ public class Bear {
         bear = new ImageView();
         image1 = null;
         if(actPoz == 1)
-            image1 = new Image(getClass().getClassLoader().getResource("enemy/bear/bear_R.gif").toString());
+            image1 = new Image(getClass().getClassLoader().getResource("fullhd/enemy/bearbear_R.gif").toString());
         else
-            image1 = new Image(getClass().getClassLoader().getResource("enemy/bear/bear.gif").toString());
+            image1 = new Image(getClass().getClassLoader().getResource("fullhd/enemy/bear/bear.gif").toString());
         bear.setImage(image1);
         bear.setX(bearPoz[actPoz]);
         bear.setY(500);
         knocked = 0;
         if(actPoz == 0)
             speed *= -1;
+    }
+    public int getHealth(){
+        return health;
+    }
+    public void setHealth(int x){
+        health = x;
     }
     public ImageView getView(){
         return bear;
@@ -88,6 +96,9 @@ public class Bear {
             knocked = 8;
             if(!flokesz.getUtes())
                 flokesz.setBacked(8);
+            else{
+                health -= flokesz.getWeapon().getDamage();
+            }
         }
         else
             bear.setX(bear.getX() + speed);

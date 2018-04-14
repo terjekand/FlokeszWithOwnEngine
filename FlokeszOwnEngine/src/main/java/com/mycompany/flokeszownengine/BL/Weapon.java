@@ -31,7 +31,7 @@ public class Weapon {
     public Weapon(double x) {
 
         image1 = null;
-        image1 = new Image(getClass().getClassLoader().getResource("weapon/boko.png").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("fullhd/weapon/boko.png").toString());
         weapon.setImage(image1);
         hit_poz = 0;
         damage = 50;
@@ -43,7 +43,9 @@ public class Weapon {
     public double getX() {
         return x;
     }
-
+    public int getDamage(){
+        return damage;
+    }
     public void hitR(){
         weapon.setRotate(90);
     }

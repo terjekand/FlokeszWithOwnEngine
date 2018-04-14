@@ -38,7 +38,7 @@ public class Character {
     boolean pass = false;
     boolean utes = false;
     Character(){
-        image1 = new Image(getClass().getClassLoader().getResource("Flokesz/rest/flokesz.gif").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("fullhd/Flokesz/rest/flokesz.gif").toString());
         player.setImage(image1);
         player.setX(100);
         player.setY(600);
@@ -95,13 +95,16 @@ public class Character {
         backed--;
         
     }
+    public Weapon getWeapon(){
+        return fegyver;
+    }
     public void update(){
         if(!rest){
             if(jobbra){
                     rested = false;
                     balraMent = false;
                     if(!jobbraMent)
-                        setImg("Flokesz/run/flokesz_run.gif");
+                        setImg("fullhd/Flokesz/run/flokesz_run.gif");
                     player.setImage(image1);
                 }
 
@@ -109,7 +112,7 @@ public class Character {
                 rested = false;
                 jobbraMent = false;
                 if(!balraMent)
-                   setImg("Flokesz/run/flokesz_run_R.gif");
+                   setImg("fullhd/Flokesz/run/flokesz_run_R.gif");
                    player.setImage(image1);
                 }
             }
@@ -119,9 +122,9 @@ public class Character {
                 balraMent = false;
                 rested = true;
                 if(jobbra)
-                    setImg("Flokesz/rest/flokesz.gif");
+                    setImg("fullhd/Flokesz/rest/flokesz.gif");
                 else
-                    setImg("Flokesz/rest/flokesz_R.gif");
+                    setImg("fullhd/Flokesz/rest/flokesz_R.gif");
                 player.setImage(image1);
             }
             
