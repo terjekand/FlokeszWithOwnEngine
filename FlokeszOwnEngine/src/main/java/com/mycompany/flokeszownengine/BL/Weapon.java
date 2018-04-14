@@ -31,15 +31,9 @@ public class Weapon {
     public Weapon(double x) {
 
         image1 = null;
-            //image1 = new Image(new FileInputStream("/home/kiss/Documents/School/ProgTech/OwnEngine/src/main/java/textures/weapon/boko.png"));
         image1 = new Image(getClass().getClassLoader().getResource("weapon/boko.png").toString());
         weapon.setImage(image1);
         hit_poz = 0;
-        hit_dist = new int[4];
-        hit_dist[0] = 0;
-        hit_dist[1] = 16;
-        hit_dist[2] = 60;
-        hit_dist[3] = 120;
         damage = 50;
         this.x = x + 30;
         weapon.setX(this.x);
@@ -56,11 +50,6 @@ public class Weapon {
     public void hitL(){
         
         weapon.setRotate(-90); 
-    }
-
-    public void revHit(int i){
-        hit_poz = -1;
-        weapon.setTranslateZ(i);
     }
     public ImageView getWeapon(){
         return weapon;

@@ -74,6 +74,7 @@ public class Input {
             }
             if (keyEvent.getCode() == KeyCode.SPACE) {
                 doHitAction();
+                flokesz.setUtes(true);
             }
             if (keyEvent.getCode() == KeyCode.A) {
                 flokesz.fegyver.weapon.setRotate(0);
@@ -86,7 +87,9 @@ public class Input {
 
             }
             if (keyEvent.getEventType() == KeyEvent.KEY_RELEASED){
-                    flokesz.rest = true; 
-                flokesz.fegyver.weapon.setRotate(0);}
+                flokesz.rest = true; 
+                flokesz.fegyver.weapon.setRotate(0);
+                flokesz.setUtes(false);
+            }    
         };
 }

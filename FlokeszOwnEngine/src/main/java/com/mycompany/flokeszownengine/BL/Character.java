@@ -79,6 +79,9 @@ public class Character {
     public void setBacked(int x){
         backed = x;
     }
+    public int getBacked(){
+        return backed;
+    }
     public void update(){
         if(backed > 0){
                 player.setX(player.getX() - 50);
