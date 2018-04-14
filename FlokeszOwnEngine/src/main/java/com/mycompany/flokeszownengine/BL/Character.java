@@ -82,12 +82,20 @@ public class Character {
     public int getBacked(){
         return backed;
     }
-    public void update(){
-        if(backed > 0){
-                player.setX(player.getX() - 50);
-                fegyver.getWeapon().setX(fegyver.getWeapon().getX() - 50);
-            backed--;
+    public void applyBackward(int x){
+        if(x < 0){
+            player.setX(player.getX() - 50);
+            fegyver.getWeapon().setX(fegyver.getWeapon().getX() - 50);
         }
+        else{
+            player.setX(player.getX() + 50);
+            fegyver.getWeapon().setX(fegyver.getWeapon().getX() + 50);
+        }
+        
+        backed--;
+        
+    }
+    public void update(){
         if(!rest){
             if(jobbra){
                     rested = false;

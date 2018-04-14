@@ -66,18 +66,24 @@ public class Bear {
             bear.setX(bear.getX() - 50);
         knocked--;
     }
+    public int getSpeed(){
+        return speed;
+    }
+    
     public boolean toBackR(Character flokesz){
         return (abs(flokesz.getPoz() + flokesz.getImg().getWidth() - bear.getX()) < 5) 
                 || (abs(flokesz.getPoz() + flokesz.getImg().getWidth() / 2 - bear.getX()) < 5);
     }
+    
     public boolean toBackL(Character flokesz){
-         return (abs(flokesz.getPoz() - bear.getX() + image1.getWidth()) < 5) 
-                || (abs(flokesz.getPoz() - bear.getX() + image1.getWidth() / 2) < 5); 
+         return (abs(flokesz.getPoz() - (bear.getX() + image1.getWidth())) < 5) 
+                || (abs(flokesz.getPoz()  - (bear.getX() + image1.getWidth() / 2)) < 5); 
     }
+    
     public void update(Character flokesz){
         if(knocked == 0){
             if(toBackR(flokesz)
-              //|| toBackL(flokesz)
+              || toBackL(flokesz)
                     ){
             knocked = 8;
             if(!flokesz.getUtes())

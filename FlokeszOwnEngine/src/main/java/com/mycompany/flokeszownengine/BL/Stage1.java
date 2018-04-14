@@ -43,6 +43,9 @@ public class Stage1 {
     }
     public void update(Character flokesz){
         bear.update(flokesz);
+        if(flokesz.getBacked() > 0){
+            flokesz.applyBackward(bear.getSpeed());
+        }
     }
     
 }
