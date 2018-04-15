@@ -33,6 +33,7 @@ public class Window{
     private Scene scene;
     private String stageId;
     final ImageView selectedImage;
+    String path;
     Image image1;
     Res res;
     public Window(GameEngine game){
@@ -47,13 +48,15 @@ public class Window{
         bg = new Pane();
         bg.setId("alap");
         bg.getChildren().addAll(selectedImage, game.flokesz.player, game.flokesz.fegyver.weapon);
-        scene = new Scene(bg, 1920, 1080);
+        scene = new Scene(bg, 1920, 1080);     
         window.setScene(res.getScene());
         window.show();
         //window.setFullScreen(true);
 
     }
-
+    public String getPath(){
+        return path;
+    }
     public Scene getScene() {
         return scene;
     }
@@ -67,6 +70,10 @@ public class Window{
     public void update(Character flokesz){
         if(!res.getChoosed()){
             window.setScene(res.getScene());
+            res.getFullHdButton().setOnAction(e -> {path = "fullhd";
+                                                    res.setChoosed(true);});
+            res.getHdButton().setOnAction(e -> {path = "hd";
+                                            res.setChoosed(true);});
         }
         else{
             window.setScene(scene);
