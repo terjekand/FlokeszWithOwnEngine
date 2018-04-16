@@ -47,7 +47,7 @@ public class Bear {
             image1 = new Image(getClass().getClassLoader().getResource("hd/characters/enemy/lvl1/bear/bear.gif").toString());
         bear.setImage(image1);
         bear.setX(bearPoz[actPoz]);
-        bear.setY(300);
+        bear.setY(350);
         knocked = 0;
         if(actPoz == 0)
             speed *= -1;

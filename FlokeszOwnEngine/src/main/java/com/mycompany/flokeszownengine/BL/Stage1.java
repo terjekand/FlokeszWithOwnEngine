@@ -41,6 +41,9 @@ public class Stage1 {
     public Image getImage(){
         return image1;
     }
+    public void initBear(){
+        bear = new Bear();
+    }
     public void update(Character flokesz){
         bear.update(flokesz);
         if(flokesz.getBacked() > 0){

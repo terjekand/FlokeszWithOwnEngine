@@ -56,6 +56,11 @@ public class GameEngine {
                     ablak.getBg().getChildren().add(stage1.getBear().getView());
                 }
                 if(stage1.getRun()){
+                    if(stage1.getBear().getHealth() <= 0){
+                        ablak.getBg().getChildren().remove(stage1.getBear().getView());
+                        stage1.initBear();
+                        ablak.getBg().getChildren().add(stage1.getBear().getView());
+                    }
                     stage1.update(flokesz);
                 }
             }
