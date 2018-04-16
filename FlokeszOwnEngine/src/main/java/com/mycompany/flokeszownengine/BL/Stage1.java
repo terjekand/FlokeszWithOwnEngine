@@ -27,7 +27,7 @@ public class Stage1 {
     boolean run = false;
     public Stage1(){
         bear = new Bear();
-        image1 = new Image(getClass().getClassLoader().getResource("fullhd/bg/maps/1.png").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("hd/bg/maps/1.png").toString());
     }
     public Bear getBear(){
         return bear;

@@ -37,14 +37,14 @@ public class Window{
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
-        image1 = new Image(getClass().getClassLoader().getResource("fullhd/bg/menu/menu_bg.png").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("hd/bg/menu/menu_bg.png").toString());
         selectedImage.setImage(image1);
         window = new Stage();
         window.setTitle("TryOwnEngine");
         bg = new Pane();
         bg.setId("alap");
         bg.getChildren().addAll(selectedImage, game.flokesz.player, game.flokesz.fegyver.weapon);
-        scene = new Scene(bg, 1920, 1080);
+        scene = new Scene(bg, 1366, 768);
         window.show();
         //window.setFullScreen(true);
 

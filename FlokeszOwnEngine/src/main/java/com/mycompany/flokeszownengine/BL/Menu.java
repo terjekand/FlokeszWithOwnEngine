@@ -30,7 +30,7 @@ public class Menu {
         tav = 100;
         fogadoPoz = 220;
         piacPoz = 825;
-        tablaPoz = 1830;
+        tablaPoz = 1280;
         muhelyPoz = 1430;
         tablanal = false;
         piacnal = false;

@@ -31,13 +31,13 @@ public class Weapon {
     public Weapon(double x) {
 
         image1 = null;
-        image1 = new Image(getClass().getClassLoader().getResource("fullhd/weapon/boko.png").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("hd/weapon/boko.png").toString());
         weapon.setImage(image1);
         hit_poz = 0;
         damage = 50;
-        this.x = x + 30;
+        this.x = x + 15;
         weapon.setX(this.x);
-        weapon.setY(720);
+        weapon.setY(485);
     }
 
     public double getX() {

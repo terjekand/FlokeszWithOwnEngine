@@ -42,12 +42,12 @@ public class Bear {
         bear = new ImageView();
         image1 = null;
         if(actPoz == 1)
-            image1 = new Image(getClass().getClassLoader().getResource("fullhd/enemy/bearbear_R.gif").toString());
+            image1 = new Image(getClass().getClassLoader().getResource("hd/characters/enemy/lvl1/bear/bear_R.gif").toString());
         else
-            image1 = new Image(getClass().getClassLoader().getResource("fullhd/enemy/bear/bear.gif").toString());
+            image1 = new Image(getClass().getClassLoader().getResource("hd/characters/enemy/lvl1/bear/bear.gif").toString());
         bear.setImage(image1);
         bear.setX(bearPoz[actPoz]);
-        bear.setY(500);
+        bear.setY(300);
         knocked = 0;
         if(actPoz == 0)
             speed *= -1;

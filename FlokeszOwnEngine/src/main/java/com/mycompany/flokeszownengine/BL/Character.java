@@ -38,10 +38,10 @@ public class Character {
     boolean pass = false;
     boolean utes = false;
     Character(){
-        image1 = new Image(getClass().getClassLoader().getResource("fullhd/Flokesz/rest/flokesz.gif").toString());
+        image1 = new Image(getClass().getClassLoader().getResource("hd/Flokesz/rest/flokesz.gif").toString());
         player.setImage(image1);
         player.setX(100);
-        player.setY(600);
+        player.setY(400);
         fegyver = new Weapon(130);
         map = "Menu";
         //TODO HP-BAR
@@ -64,7 +64,10 @@ public class Character {
     }
     void setX(double x){
         player.setX(x);
-        fegyver.weapon.setX(x + 60);
+        if(jobbra)
+            fegyver.weapon.setX(x + 45);
+        else
+            fegyver.weapon.setX(x + 60);
     }
     double getPoz(){
         return player.getX();
@@ -103,7 +106,7 @@ public class Character {
                     rested = false;
                     balraMent = false;
                     if(!jobbraMent)
-                        setImg("fullhd/Flokesz/run/flokesz_run.gif");
+                        setImg("hd/Flokesz/run/flokesz_run.gif");
                     player.setImage(image1);
                 }
 
@@ -111,7 +114,7 @@ public class Character {
                 rested = false;
                 jobbraMent = false;
                 if(!balraMent)
-                   setImg("fullhd/Flokesz/run/flokesz_run_R.gif");
+                   setImg("hd/Flokesz/run/flokesz_run_R.gif");
                    player.setImage(image1);
                 }
             }
@@ -121,9 +124,9 @@ public class Character {
                 balraMent = false;
                 rested = true;
                 if(jobbra)
-                    setImg("fullhd/Flokesz/rest/flokesz.gif");
+                    setImg("hd/Flokesz/rest/flokesz.gif");
                 else
-                    setImg("fullhd/Flokesz/rest/flokesz_R.gif");
+                    setImg("hd/Flokesz/rest/flokesz_R.gif");
                 player.setImage(image1);
             }
             
