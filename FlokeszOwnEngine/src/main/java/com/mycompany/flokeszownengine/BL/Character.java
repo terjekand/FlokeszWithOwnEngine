@@ -38,6 +38,8 @@ public class Character {
     boolean pass = false;
     boolean utes = false;
     Character(){
+        currHp = 100;
+        killCounter = 0;
         image1 = new Image(getClass().getClassLoader().getResource("hd/Flokesz/rest/flokesz.gif").toString());
         player.setImage(image1);
         player.setX(100);
@@ -84,6 +86,12 @@ public class Character {
     public int getBacked(){
         return backed;
     }
+    public int getKillCount(){
+        return killCounter;
+    }
+    public void incKillCount(){
+        killCounter++;
+    }
     public void applyBackward(int x){
         if(x < 0){
             player.setX(player.getX() - 50);
@@ -96,6 +104,12 @@ public class Character {
         
         backed--;
         
+    }
+    public float getHp(){
+        return currHp;
+    }
+    public void setHp(int x){
+        currHp += x;
     }
     public Weapon getWeapon(){
         return fegyver;

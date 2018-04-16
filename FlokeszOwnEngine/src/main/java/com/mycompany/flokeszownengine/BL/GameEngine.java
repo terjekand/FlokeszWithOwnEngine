@@ -16,6 +16,10 @@ package com.mycompany.flokeszownengine.BL;
  */
 import com.mycompany.flokeszownengine.UI.Window;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 /**
  *
  * @author kiss
@@ -29,6 +33,7 @@ public class GameEngine {
 
     Input input;
     Window ablak;
+    boolean alreadyStopped = false;
     public Character flokesz;
 
     public GameEngine(){
@@ -44,7 +49,8 @@ public class GameEngine {
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 double t = (currentNanoTime - startNanoTime) / 1000000000.0;
-                flokesz.update();
+                if(flokesz.getHp() > 0){
+                    flokesz.update();
                 ablak.update(flokesz);
                 ablak.getScene().setOnKeyPressed(input.keyEventHandler);
                 ablak.getScene().setOnKeyReleased(input.keyEventHandler);
@@ -54,15 +60,35 @@ public class GameEngine {
                     flokesz.setPass(false);
                     stage1.setRun(true);
                     ablak.getBg().getChildren().add(stage1.getBear().getView());
+                    ablak.getBg().getChildren().add(ablak.getScoreBox());
+                    ablak.getScoreBox().setText("0");
+                    ablak.getScoreBox().setTextFill(Color.WHITE);
+                    ablak.getScoreBox().setFont(Font.font ("Verdana", 40));
                 }
                 if(stage1.getRun()){
-                    if(stage1.getBear().getHealth() <= 0){
-                        ablak.getBg().getChildren().remove(stage1.getBear().getView());
-                        stage1.initBear();
-                        ablak.getBg().getChildren().add(stage1.getBear().getView());
+                        if(flokesz.getBacked() > 0)
+                            ablak.getHpBox().setText("" + flokesz.getHp());
+                        if(stage1.getBear().getHealth() <= 0){
+                            ablak.getBg().getChildren().remove(stage1.getBear().getView());
+                            stage1.initBear();
+                            ablak.getBg().getChildren().add(stage1.getBear().getView());
+                            flokesz.incKillCount();
+                            ablak.getScoreBox().setText("" + flokesz.getKillCount());
+                        }
+                        stage1.update(flokesz);
                     }
-                    stage1.update(flokesz);
                 }
+                else if(!alreadyStopped){
+                    Label endtext = new Label("Well Played!\n" + flokesz.getBacked());
+                    endtext.setAlignment(Pos.CENTER);
+                    endtext.setTextFill(Color.WHITE);
+                    endtext.setFont(Font.font ("Verdana", 40));
+                    ablak.setEnd();
+                    ablak.getBg().getChildren().add(endtext);
+                    alreadyStopped = true;
+                    ablak.update(flokesz);
+                }
+                
             }
         }.start();
 

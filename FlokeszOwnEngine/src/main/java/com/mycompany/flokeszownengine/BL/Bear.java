@@ -36,7 +36,7 @@ public class Bear {
         speed = -2;
         bearPoz = new int [2];
         bearPoz[0] = -300;
-        bearPoz[1] = 2300;
+        bearPoz[1] = 1666;
         Random rand = new Random();
         actPoz = rand.nextInt(2);
         bear = new ImageView();
@@ -94,8 +94,10 @@ public class Bear {
               || toBackL(flokesz)
                     ){
             knocked = 8;
-            if(!flokesz.getUtes())
+            if(!flokesz.getUtes()){
                 flokesz.setBacked(8);
+                flokesz.setHp(-20);
+            }
             else{
                 health -= flokesz.getWeapon().getDamage();
             }

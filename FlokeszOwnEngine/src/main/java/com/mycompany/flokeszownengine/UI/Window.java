@@ -22,6 +22,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import com.mycompany.flokeszownengine.BL.Character;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 /**
  *
  * @author kiss
@@ -33,7 +36,14 @@ public class Window{
     private String stageId;
     final ImageView selectedImage;
     Image image1;
+    Label scoreBox;
+    Label hpBox;
     public Window(GameEngine game){
+        scoreBox = new Label();
+        hpBox = new Label("100");
+        hpBox.setLayoutX(1280);
+        hpBox.setTextFill(Color.RED);
+        hpBox.setFont(Font.font ("Verdana", 40));
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
@@ -43,25 +53,33 @@ public class Window{
         window.setTitle("TryOwnEngine");
         bg = new Pane();
         bg.setId("alap");
-        bg.getChildren().addAll(selectedImage, game.flokesz.player, game.flokesz.fegyver.weapon);
+        bg.getChildren().addAll(selectedImage, hpBox, game.flokesz.player, game.flokesz.fegyver.weapon);
         scene = new Scene(bg, 1366, 768);
         window.show();
         //window.setFullScreen(true);
 
     }
-
+    public Label getHpBox(){
+        return hpBox;
+    }
+    public Label getScoreBox(){
+        return scoreBox;
+    }
     public Scene getScene() {
         return scene;
     }
     public Pane getBg(){
         return bg;
     }
-
+    public void setEnd(){
+        bg.getChildren().removeAll();
+        bg.getChildren().add(selectedImage);
+    }
     public void setView(Image image){
         selectedImage.setImage(image);
     }
     public void update(Character flokesz){
-        window.setScene(scene);
+            window.setScene(scene);
 
 
     }
