@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Bear xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/com/mycompany/flokeszownengine/BL/Bear.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright 2018 Kiss Dávid.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * Licensed under the Apache License, Version 2.0 (the "License");</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * See the License for the specific language governing permissions and</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * limitations under the License.</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">package</strong> com.mycompany.flokeszownengine.BL;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> javafx.scene.image.Image;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> javafx.scene.image.ImageView;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> java.lang.Math.abs;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.util.Random;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment"> * @author kiss</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/mycompany/flokeszownengine/BL/Bear.html">Bear</a> {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      Image image1;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      ImageView bear;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      <strong class="jxr_keyword">int</strong> knocked;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">int</strong> bearPoz[];
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      <strong class="jxr_keyword">int</strong> actPoz;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      <strong class="jxr_keyword">int</strong> speed;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">int</strong> health;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../com/mycompany/flokeszownengine/BL/Bear.html">Bear</a>(){
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          health = 100;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          speed = -2;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          bearPoz = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong> [2];
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          bearPoz[0] = -300;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          bearPoz[1] = 1666;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          Random rand = <strong class="jxr_keyword">new</strong> Random();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          actPoz = rand.nextInt(2);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          bear = <strong class="jxr_keyword">new</strong> ImageView();
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          image1 = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">if</strong>(actPoz == 1)
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>              image1 = <strong class="jxr_keyword">new</strong> Image(getClass().getClassLoader().getResource(<span class="jxr_string">"hd/characters/enemy/lvl1/bear/bear_R.gif"</span>).toString());
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              image1 = <strong class="jxr_keyword">new</strong> Image(getClass().getClassLoader().getResource(<span class="jxr_string">"hd/characters/enemy/lvl1/bear/bear.gif"</span>).toString());
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          bear.setImage(image1);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          bear.setX(bearPoz[actPoz]);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          bear.setY(350);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          knocked = 0;
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <strong class="jxr_keyword">if</strong>(actPoz == 0)
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>              speed *= -1;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      }
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * A medve eletet kapjuk meg.</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * @return a medve elete</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getHealth(){
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">return</strong> health;
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     * Modostijuk a medve eletet.</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     * @param x el modosul</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setHealth(<strong class="jxr_keyword">int</strong> x){
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          health = x;
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">     * A medvehez tartozo kepet adja vissza.</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_javadoccomment">     * @return azt az ImageViewet adja vissza amelyet be toltok a scenembe</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">public</strong> ImageView getView(){
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          <strong class="jxr_keyword">return</strong> bear;
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      }
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  <em class="jxr_javadoccomment">     * Kep kinyeres.</em>
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_javadoccomment">     * @return Megkapjuk, hogy aktualisan melyik kep van betoltve az ImageViewunkba </em>
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>      <strong class="jxr_keyword">public</strong> Image getImage(){
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          <strong class="jxr_keyword">return</strong> image1;
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>      }
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  <em class="jxr_javadoccomment">     * Pozicio kinyeres.</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  <em class="jxr_javadoccomment">     * @return A medve aktualis pozicioja</em>
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getPoz(){
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">return</strong> bear.getX();
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      }
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_javadoccomment">     * A hatralokes megvalositasa, az alapjan, hogy a konstruktorban mely poziciora tettuk le a medvet.</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> back(){
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          <strong class="jxr_keyword">if</strong>(actPoz == 1)
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>               bear.setX(bear.getX() + 50);
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>              bear.setX(bear.getX() - 50);
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          knocked--;
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      }
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> <em class="jxr_javadoccomment">     * A medve sebessege.</em>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_javadoccomment">     * @return A medve mozgasi sebesseget adja meg</em>
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> getSpeed(){
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         <strong class="jxr_keyword">return</strong> speed;
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>     }
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_javadoccomment">     * Jobbrol utkozes erzekelese.</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">     * Megnezzuk, hogy a karakter pozicioja + annak szelessege a medve poziciojahoz kepest hogyan helyezkedik el</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">     * X koordinatakat vizsgálok csak.</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_javadoccomment">     * Egy tartomanyt hasznalok benne, mert ha statikusana cska egy adott X koordinatara vizsgalnek, akkor</em>
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_javadoccomment">     * a sok mozgasi hatas miatt bekovetkezhet, hogy rosszul tortenik a vizsgalat,</em>
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_javadoccomment">     * @param flokesz a karakter amihez kepest frissitunk mindent</em>
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_javadoccomment">     * @return olyan logikai ertek amely visszaadja, hogy hatra kell e lokni a medvet</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> toBackR(<a href="../../../../com/mycompany/flokeszownengine/BL/Character.html">Character</a> flokesz){
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">return</strong> (abs(flokesz.getPoz() + flokesz.getImg().getWidth() - bear.getX()) &lt; 5) 
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>                 || (abs(flokesz.getPoz() + flokesz.getImg().getWidth() / 2 - bear.getX()) &lt; 5);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>     }
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> <em class="jxr_javadoccomment">     * A fent letrehozott hatralokes fuggveny megvalositasa balra.</em>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> <em class="jxr_javadoccomment">     * @param flokesz a karater amihez kepest frissitunk mindent</em>
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> <em class="jxr_javadoccomment">     * @return olyan logikai ertek amely megadja, hogy hatra kell-e lokni a medvet</em>
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> toBackL(<a href="../../../../com/mycompany/flokeszownengine/BL/Character.html">Character</a> flokesz){
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>          <strong class="jxr_keyword">return</strong> (abs(flokesz.getPoz() - (bear.getX() + image1.getWidth())) &lt; 5) 
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>                 || (abs(flokesz.getPoz()  - (bear.getX() + image1.getWidth() / 2)) &lt; 5); 
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>     }
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> <em class="jxr_javadoccomment">     * A medve frissitese.</em>
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> <em class="jxr_javadoccomment">     * A sebzes megvalositasa.</em>
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> <em class="jxr_javadoccomment">     * A hatralokes megvalositasa.</em>
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> <em class="jxr_javadoccomment">     * A mozgas megvalositasa.</em>
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> <em class="jxr_javadoccomment">     * @param flokesz </em>
+<a class="jxr_linenumber" name="L136" href="#L136">136</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> update(<a href="../../../../com/mycompany/flokeszownengine/BL/Character.html">Character</a> flokesz){
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>         <strong class="jxr_keyword">if</strong>(knocked == 0){
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>             <strong class="jxr_keyword">if</strong>(toBackR(flokesz)
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>               || toBackL(flokesz)
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>                     ){
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>             knocked = 8;
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>             <strong class="jxr_keyword">if</strong>(!flokesz.getUtes()){
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>                 flokesz.setBacked(8);
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>                 flokesz.setHp(-20);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             }
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>             <strong class="jxr_keyword">else</strong>{
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>                 health -= flokesz.getWeapon().getDamage();
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>             }
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         }
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>             bear.setX(bear.getX() + speed);
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>         }
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>         <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>             back();
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>     }
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2018 <a href="https://github.com/kissdavid0506/">Kiss Dávid</a>. All rights reserved.</div>
+</body>
+</html>

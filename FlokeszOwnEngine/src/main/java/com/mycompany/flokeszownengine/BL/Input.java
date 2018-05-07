@@ -29,7 +29,9 @@ public class Input {
     Input(Character flokesz){
         this.flokesz = flokesz;
     }
-    
+    /**
+    * Az utes mozdulat megvalositasaert felelos fuggveny.
+    */
     private void doHitAction(){
         if(flokesz.jobbra){
                     if(i == 0){
@@ -55,16 +57,25 @@ public class Input {
                     }  
                 }
     }
+    /**
+    * A jobbrafutas megvalositasaert felelos fuggvveny.
+    */
     private void applyRightMovement(){
                 flokesz.setX(flokesz.getPoz() - 15);
                 flokesz.jobbra = false;
                 flokesz.rest = false;
     }
+    /**
+    * A balra futas megvalositasaert felelos fuggveny.
+    */
     private void applyLeftMovement(){
                 flokesz.setX(flokesz.getPoz() + 15);
                 flokesz.jobbra = true;
                 flokesz.rest = false;
     }
+    /**
+    * A billentyuzet lenyomas erzekelese.
+    */
     final EventHandler<KeyEvent> keyEventHandler =
             keyEvent -> {
                 if (keyEvent.getCode() == KeyCode.ENTER) {

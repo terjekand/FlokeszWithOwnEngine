@@ -49,21 +49,46 @@ public class Character {
         //TODO HP-BAR
 
     }
+    /**
+     * Az utes statuszat adja vissza.
+     * @return Vissza adja, hogy eppen utunk-e.
+     */
     public boolean getUtes(){
         return utes;
     }
+    /**
+     * Az utes statuszanak a modositasa.
+     * @param x re modositjuk az utes statuszat (logikai ertek)
+     */
     public void setUtes(boolean x){
         utes = x;
     }
+    /**
+     * Atmehetunk-e az elso palyara.
+     * @return ha a pass logikai valtozo igaz akkor tovabbenged a jatek
+     */
     public boolean getPass(){
         return pass;
     }
+    /**
+     * Vissza adja az objektumhoz tartozo megjelenitendo kepet.
+     * @return a player valtozo a kepet tartalmazza amit mindenhol mashol csak frissitek
+     */
     public ImageView getPlayer(){
         return player;
     }
+    /**
+     * Ha az atjutasi feltetelek teljesulnek akkor hivodik meg.
+     * @param x re allitja a Pass valtozot
+     */
     public void setPass(boolean x){
         pass = x;
     }
+    /**
+     * Fegyver es karakter mozgatasa.
+     * Jobbra vagy balra nezes erzekelese
+     * @param x re allitja a koordinatajat a karakternek es ehhez kepest relativan a fegyveret
+     */
     void setX(double x){
         player.setX(x);
         if(jobbra)
@@ -71,27 +96,64 @@ public class Character {
         else
             fegyver.weapon.setX(x + 60);
     }
+    /**
+     * Karakter poziciojanak megkapasa.
+     * @return a karakter pozicioja
+     */
     double getPoz(){
         return player.getX();
     }
+    /**
+     * A kepek frissitesere hasznalom.
+     * A kepek a billentyuzet leutesek fuggvenyeben frissulnek
+     * @param img re allitom az imageview kepet
+     */
     public void setImg(String img){
        image1 = new Image(getClass().getClassLoader().getResource(img).toString());
     }
+    /**
+     * Megkapjuk az aktualis kepet.
+     * @return az aktualisan hasznalt kep
+     */
     public Image getImg(){
         return image1;
     }
+    /**
+     * A hatrautes beallitasa.
+     * Amikor a karakter utkozik a medvevel ezt a valtozot egy nullanal nagyobb szamra allitom be.
+     * Ennek segitsegevel fokozatosan csuszik hatra a karakter es ha modositani akarok a hatralokes merteken
+     * csak nagyobb szamot adok at a fuggvenynek.
+     * @param x - szer csuszik hatra majd a karakter
+     */
     public void setBacked(int x){
         backed = x;
     }
+    /**
+     * Megezzuk, hogy mennyit kell meg hatra csusznunk.
+     * @return mennyiszer kell meg hatracsusznunk
+     */
     public int getBacked(){
         return backed;
     }
+    /**
+     * Az olesek szamat adja vissza.
+     * @return az olesek szama
+     */
     public int getKillCount(){
         return killCounter;
     }
+    /**
+     * Az olesek szamanak novelese.
+    */
     public void incKillCount(){
         killCounter++;
     }
+    /**
+     * A hatralokes megvalositasa.
+     * @param x a medve sebessege, ami hogyha negativ, akkor jobbrol
+     * egyebkent meg balrol erkezik, ennek fuggvenyeben tudjuk meg, hogy
+     * melyik iranyba valosul meg a hatralokes
+     */
     public void applyBackward(int x){
         if(x < 0){
             player.setX(player.getX() - 50);
@@ -105,15 +167,32 @@ public class Character {
         backed--;
         
     }
+    /**
+     * Aktualis elet visszaadasa.
+     * @return az aktualis elet
+     */
     public float getHp(){
         return currHp;
     }
+    /**
+     * Aktualis frissitese.
+     * Alltalaban negativ szammal hivodik meg a fuggveny
+     * @param x el csokken az elet
+     */
     public void setHp(int x){
         currHp += x;
     }
+    /**
+     * A fegyver objektum megszerzese.
+     * @return megkapjuk a karakterhez tartozo fegyver objektumot
+     */
     public Weapon getWeapon(){
         return fegyver;
     }
+    /**
+     * A karakterunk frissitese.
+     * Jellemzoen minden karakterhez tartozo uj kep betoltesere itt kerul sor
+     */
     public void update(){
         if(!rest){
             if(jobbra){

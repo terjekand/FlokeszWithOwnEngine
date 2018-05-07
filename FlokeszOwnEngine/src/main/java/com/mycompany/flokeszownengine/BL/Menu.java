@@ -37,6 +37,12 @@ public class Menu {
         fogadonal = false;
         muhelynel = false;
     }
+    /**
+     * Az enter leutes a tablanal volt-e.
+     * Ha igen akkor a karakter tovabb mehet a palyara
+     * @param flokesz a karakterunk amely tovabbjut majd a palyara
+     * @return logikai ertek ami vissza adja, hogy elkezdodhet-e a jatek.
+     */
     public boolean isNearTheTable(Character flokesz){
         if(abs(flokesz.player.getX() - tablaPoz) <= tav)
             return true;

@@ -52,21 +52,44 @@ public class Bear {
         if(actPoz == 0)
             speed *= -1;
     }
+    /**
+     * A medve eletet kapjuk meg.
+     * @return a medve elete
+     */
     public int getHealth(){
         return health;
     }
+    /**
+     * Modostijuk a medve eletet.
+     * @param x el modosul
+     */
     public void setHealth(int x){
         health = x;
     }
+    /**
+     * A medvehez tartozo kepet adja vissza.
+     * @return azt az ImageViewet adja vissza amelyet be toltok a scenembe
+     */
     public ImageView getView(){
         return bear;
     }
+    /**
+     * Kep kinyeres.
+     * @return Megkapjuk, hogy aktualisan melyik kep van betoltve az ImageViewunkba 
+     */
     public Image getImage(){
         return image1;
     }
+    /**
+     * Pozicio kinyeres.
+     * @return A medve aktualis pozicioja
+     */
     public double getPoz(){
         return bear.getX();
     }
+    /**
+     * A hatralokes megvalositasa, az alapjan, hogy a konstruktorban mely poziciora tettuk le a medvet.
+     */
     private void back(){
         if(actPoz == 1)
              bear.setX(bear.getX() + 50);
@@ -74,20 +97,43 @@ public class Bear {
             bear.setX(bear.getX() - 50);
         knocked--;
     }
+    /**
+     * A medve sebessege.
+     * @return A medve mozgasi sebesseget adja meg
+     */
     public int getSpeed(){
         return speed;
     }
-    
+    /**
+     * Jobbrol utkozes erzekelese.
+     * Megnezzuk, hogy a karakter pozicioja + annak szelessege a medve poziciojahoz kepest hogyan helyezkedik el
+     * X koordinatakat vizsgálok csak.
+     * Egy tartomanyt hasznalok benne, mert ha statikusana cska egy adott X koordinatara vizsgalnek, akkor
+     * a sok mozgasi hatas miatt bekovetkezhet, hogy rosszul tortenik a vizsgalat,
+     * @param flokesz a karakter amihez kepest frissitunk mindent
+     * @return olyan logikai ertek amely visszaadja, hogy hatra kell e lokni a medvet
+     */
     public boolean toBackR(Character flokesz){
         return (abs(flokesz.getPoz() + flokesz.getImg().getWidth() - bear.getX()) < 5) 
                 || (abs(flokesz.getPoz() + flokesz.getImg().getWidth() / 2 - bear.getX()) < 5);
     }
-    
+    /**
+     * A fent letrehozott hatralokes fuggveny megvalositasa balra.
+     * @param flokesz a karater amihez kepest frissitunk mindent
+     * @return olyan logikai ertek amely megadja, hogy hatra kell-e lokni a medvet
+     */
     public boolean toBackL(Character flokesz){
          return (abs(flokesz.getPoz() - (bear.getX() + image1.getWidth())) < 5) 
                 || (abs(flokesz.getPoz()  - (bear.getX() + image1.getWidth() / 2)) < 5); 
     }
-    
+    /**
+     * A medve frissitese.
+     * A sebzes megvalositasa.
+     * A hatralokes megvalositasa.
+     * A mozgas megvalositasa.
+     * 
+     * @param flokesz 
+     */
     public void update(Character flokesz){
         if(knocked == 0){
             if(toBackR(flokesz)

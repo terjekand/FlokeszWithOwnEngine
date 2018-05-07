@@ -27,9 +27,7 @@ import javafx.scene.text.Font;
 public class GameEngine {
     long startNanoTime;
     Stage1 stage1;
-    public Input getInput() {
-        return input;
-    }
+    
 
     Input input;
     Window ablak;
@@ -44,7 +42,19 @@ public class GameEngine {
         input = new Input(flokesz);
          ablak.getScene().setOnKeyPressed(input.keyEventHandler);
     }
-
+    /**
+    * Vissza adja az inputer felelos objektumot a jatekhoz.
+    * @return   a jatekmotorhoz tartozo input
+    */
+    public Input getInput() {
+        return input;
+    }
+    /**
+    * A jatek magja.
+    * Ezzel indul el a jatek, a benne talalhato AnimationTimer felelos a folyamatos futasert
+    * Minden futas kozben torteno fuggoseg itt lesz levizsgalva.
+    * 
+    */
     public void MainLoop(){
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
@@ -78,16 +88,7 @@ public class GameEngine {
                         stage1.update(flokesz);
                     }
                 }
-                else if(!alreadyStopped){
-                    Label endtext = new Label("Well Played!\n" + flokesz.getBacked());
-                    endtext.setAlignment(Pos.CENTER);
-                    endtext.setTextFill(Color.WHITE);
-                    endtext.setFont(Font.font ("Verdana", 40));
-                    ablak.setEnd();
-                    ablak.getBg().getChildren().add(endtext);
-                    alreadyStopped = true;
-                    ablak.update(flokesz);
-                }
+                
                 
             }
         }.start();

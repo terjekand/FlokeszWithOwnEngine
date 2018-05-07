@@ -29,21 +29,49 @@ public class Stage1 {
         bear = new Bear();
         image1 = new Image(getClass().getClassLoader().getResource("hd/bg/maps/1.png").toString());
     }
+    /**
+     * Az ellenseg kinyerese a palyarol.
+     * @return A medve objektumot kapjuk meg vele
+     */
     public Bear getBear(){
         return bear;
     }
+    /**
+     * Megnezzuk, hogy fut-e az adott palya.
+     * @return A futashoz tartozo logikai ertek
+     */
     public boolean getRun(){
         return run;
     }
+    /**
+     * A futas modositasa.
+     * @param x re allitjuk a futast
+     */
     public void setRun(boolean x){
         run = x;
     }
+    /**
+     * A hatterkep visszaadasa.
+     * @return A hatterkep
+     */
     public Image getImage(){
         return image1;
     }
+    /**
+     * A medve inicializalasa.
+     * Meghivodik igy a konstruktora amelyben randomba megkapja, hogy melyik oldalrol indul
+     * Ennek fuggvenyeben kerulnek betoltodesre a kepek hozza
+     */
     public void initBear(){
         bear = new Bear();
     }
+    /**
+     * A palya frissitese.
+     * Firssitem benne a medvet is a karakter alapjan
+     * A karakter atadasa azert fontos mert az o helyzetetol es az egyeb parametereitol fugg, hogy
+     * sebzodik e valami, hatralokodik e, stb...
+     * @param flokesz a bejovo karakter, minden frissitest hozza nezek
+     */
     public void update(Character flokesz){
         bear.update(flokesz);
         if(flokesz.getBacked() > 0){

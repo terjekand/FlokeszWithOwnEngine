@@ -59,25 +59,46 @@ public class Window{
         //window.setFullScreen(true);
 
     }
+    /**
+     * Eletet mutato label .
+     * @return Azt a Labelt adja vissza amelyben a karater elete jelenul meg
+     */
     public Label getHpBox(){
         return hpBox;
     }
+    /**
+     * Scoreot mutato label.
+     * Ha megolunk egy medvet no a scoreunk
+     * @return Az a label ami a scoreunkat tartalmazza
+     */
     public Label getScoreBox(){
         return scoreBox;
     }
+    /**
+     * A stagehoz tartozo scenet adja vissza.
+     * @return A stagehoz tartozo scene
+     */
     public Scene getScene() {
         return scene;
     }
+    /**
+     * A bg olyan csoport amihez minden tovabbi obj kapcsolodik.
+     * @return Az alapertelmezett layout visszaadasa amire letrehoztam a scenet
+     */
     public Pane getBg(){
         return bg;
     }
-    public void setEnd(){
-        bg.getChildren().removeAll();
-        bg.getChildren().add(selectedImage);
-    }
+    /**
+     * Hatter beallitasa.
+     * @param image imagera
+     */
     public void setView(Image image){
         selectedImage.setImage(image);
     }
+    /**
+     * Kepernyo frissitese.
+     * @param flokesz 
+     */
     public void update(Character flokesz){
             window.setScene(scene);
 

@@ -39,20 +39,37 @@ public class Weapon {
         weapon.setX(this.x);
         weapon.setY(485);
     }
-
+    /**
+     * Az objektum helyzetenek meghatarozasa.
+     * @return A kep X koordinataja
+     */
     public double getX() {
         return x;
     }
+    /**
+     * A fegyver sebzeset adja vissza.
+     * @return A sebzes merteke
+     */
     public int getDamage(){
         return damage;
     }
+    /**
+     * Jobbra utunk.
+     */
     public void hitR(){
         weapon.setRotate(90);
     }
+    /**
+     * Balra utunk.
+     */
     public void hitL(){
         
         weapon.setRotate(-90); 
     }
+    /**
+     * ImageView megszerzese.
+     * @return Az az image view ami a scene-hez hozza lesz adva.
+     */
     public ImageView getWeapon(){
         return weapon;
     }
