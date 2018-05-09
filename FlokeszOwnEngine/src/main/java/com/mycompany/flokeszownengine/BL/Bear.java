@@ -33,7 +33,7 @@ public class Bear {
     int health;
     public Bear(){
         health = 100;
-        speed = -2;
+        speed = -6;
         bearPoz = new int [2];
         bearPoz[0] = -300;
         bearPoz[1] = 1666;
