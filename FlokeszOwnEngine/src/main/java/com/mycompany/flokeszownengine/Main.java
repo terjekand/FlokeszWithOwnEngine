@@ -16,6 +16,7 @@ package com.mycompany.flokeszownengine;
  */
 
 import com.mycompany.flokeszownengine.BL.GameEngine;
+import com.mycompany.flokeszownengine.DB.DataBase;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -24,11 +25,20 @@ import javafx.stage.Stage;
  * @author kiss
  */
 
-
 public class Main extends Application{
+    private static final DataBase DB = DataBase.getDbPeldany();
     GameEngine MyEngine;
     public static void main(String[] args){
-        launch(args);
+         try {
+            DB.connectDB();
+
+            launch(args);
+
+        } catch (Exception e) {
+            //LOGOLNI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        } finally {
+            DB.disconnectDB();
+        }
     }
 
     @Override

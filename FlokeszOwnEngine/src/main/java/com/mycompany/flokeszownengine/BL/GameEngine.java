@@ -14,7 +14,11 @@ package com.mycompany.flokeszownengine.BL;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.mycompany.flokeszownengine.DB.DataBase;
+import com.mycompany.flokeszownengine.DB.JPAEntity;
 import com.mycompany.flokeszownengine.UI.Window;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -25,6 +29,9 @@ import javafx.scene.text.Font;
  * @author kiss
  */
 public class GameEngine {
+    private static final DataBase DB = DataBase.getDbPeldany();
+    private JPAEntity flokeszEntity;
+    
     long startNanoTime;
     Stage1 stage1;
     
@@ -86,6 +93,19 @@ public class GameEngine {
                             ablak.getScoreBox().setText("" + flokesz.getKillCount());
                         }
                         stage1.update(flokesz);
+                    }
+                }
+                else{
+                    //TODO: GAME OVER
+                    ablak.getBg().setOpacity(0.7);
+                    flokeszEntity = new JPAEntity();
+                    flokeszEntity.setScore(flokesz.getKillCount());
+                    try {
+                        DB.save(flokeszEntity);
+                    } catch (IllegalArgumentException ex) {
+                        //TODO: LOGOLAS
+                    } catch (Exception ex) {
+                        //TODO: LOGOLAS
                     }
                 }
                 
