@@ -1,10 +1,10 @@
 com\mycompany\flokeszownengine\BL\Input.class
 com\mycompany\flokeszownengine\UI\Window.class
+com\mycompany\flokeszownengine\BL\Stage1.class
+com\mycompany\flokeszownengine\BL\GameEngine$1.class
+com\mycompany\flokeszownengine\BL\Menu.class
+com\mycompany\flokeszownengine\BL\Character.class
 com\mycompany\flokeszownengine\BL\GameEngine.class
 com\mycompany\flokeszownengine\Main.class
 com\mycompany\flokeszownengine\BL\Weapon.class
 com\mycompany\flokeszownengine\BL\Bear.class
-com\mycompany\flokeszownengine\BL\GameEngine$1.class
-com\mycompany\flokeszownengine\BL\Menu.class
-com\mycompany\flokeszownengine\BL\Character.class
-com\mycompany\flokeszownengine\BL\Stage1.class
