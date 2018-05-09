@@ -90,11 +90,11 @@ public class Character {
      * @param x re allitja a koordinatajat a karakternek es ehhez kepest relativan a fegyveret
      */
     void setX(double x){
-        player.setX(x);
         if(jobbra)
             fegyver.weapon.setX(x + 45);
         else
             fegyver.weapon.setX(x + 60);
+        player.setX(x);
     }
     /**
      * Karakter poziciojanak megkapasa.
@@ -154,7 +154,7 @@ public class Character {
      * egyebkent meg balrol erkezik, ennek fuggvenyeben tudjuk meg, hogy
      * melyik iranyba valosul meg a hatralokes
      */
-    public void applyBackward(int x){
+    public void applyBackward(float x){
         if(x < 0){
             player.setX(player.getX() - 50);
             fegyver.getWeapon().setX(fegyver.getWeapon().getX() - 50);

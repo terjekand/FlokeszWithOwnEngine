@@ -29,7 +29,7 @@ public class Bear {
     int knocked;
     int bearPoz[];
     int actPoz;
-    int speed;
+    float speed;
     int health;
     public Bear(){
         health = 100;
@@ -101,7 +101,7 @@ public class Bear {
      * A medve sebessege.
      * @return A medve mozgasi sebesseget adja meg
      */
-    public int getSpeed(){
+    public float getSpeed(){
         return speed;
     }
     /**

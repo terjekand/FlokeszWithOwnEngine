@@ -26,7 +26,7 @@ import javafx.scene.image.ImageView;
 public class Weapon {
     public ImageView weapon = new ImageView();
     Image image1;
-    private int hit_poz, hit_dist[], damage;
+    private int hit_poz,  damage;
     double x;
     public Weapon(double x) {
 
