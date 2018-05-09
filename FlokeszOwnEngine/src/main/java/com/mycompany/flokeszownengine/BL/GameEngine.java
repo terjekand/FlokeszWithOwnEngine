@@ -17,11 +17,7 @@ package com.mycompany.flokeszownengine.BL;
 import com.mycompany.flokeszownengine.DB.DataBase;
 import com.mycompany.flokeszownengine.DB.JPAEntity;
 import com.mycompany.flokeszownengine.UI.Window;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 /**

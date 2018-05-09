@@ -39,7 +39,7 @@ public class DataBase {
      */
     public void connectDB() throws Exception {
         //persistence.xml-ben fontos, hogy megegyezzen a persistence-unit name ezzel, jelen esetben 'database'
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("typerDB");
+        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("FlokeszDB");
         em = emFactory.createEntityManager();
         log.trace("Adatbázis kapcsolat OK.");
     }
