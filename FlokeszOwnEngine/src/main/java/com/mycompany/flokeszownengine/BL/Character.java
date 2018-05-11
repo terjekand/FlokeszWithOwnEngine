@@ -37,7 +37,7 @@ public class Character {
     public boolean jobbraMent = false, balraMent = false;
     boolean pass = false;
     boolean utes = false;
-    Character(){
+    public Character(){
         currHp = 100;
         killCounter = 0;
         image1 = new Image(getClass().getClassLoader().getResource("hd/Flokesz/rest/flokesz.gif").toString());

@@ -73,7 +73,7 @@
         <mainClass>com.mycompany.flokeszownengine.Main</mainClass>
 
         <!-- Maven teszt fázis futtatás kikapcsolása-->
-        <maven.test.skip>true</maven.test.skip>
+        <maven.test.skip>false</maven.test.skip>
 
         <!-- JavaFX futtatás argumentumok -->
         <runfx.args>-jar "${project.build.directory}/${project.build.finalName}.jar"</runfx.args>
@@ -98,6 +98,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
+        </dependency>
+                <!-- JavaFX testRunner -->
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>jfx-testrunner</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- StringUtils -->
@@ -135,7 +142,24 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+            <version>2.44.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opera</groupId>
+            <artifactId>operadriver</artifactId>
+            <scope>test</scope>
+            <version>1.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
