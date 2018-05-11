@@ -27,16 +27,16 @@ public class Bear {
     Image image1;
     ImageView bear;
     int knocked;
-    int bearPoz[];
+    double bearPoz[];
     int actPoz;
     float speed;
     int health;
     public Bear(){
         health = 100;
         speed = -6;
-        bearPoz = new int [2];
-        bearPoz[0] = -300;
-        bearPoz[1] = 1666;
+        bearPoz = new double [2];
+        bearPoz[0] = -300.0;
+        bearPoz[1] = 1666.0;
         Random rand = new Random();
         actPoz = rand.nextInt(2);
         bear = new ImageView();

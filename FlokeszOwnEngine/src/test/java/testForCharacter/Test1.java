@@ -34,8 +34,8 @@ import org.junit.runner.RunWith;
 public class Test1 {
     Character flokesz;
     @BeforeClass
-    public static void setUpClass() throws Exception {
-        
+    public static void sep(){
+        System.out.println("\n##### T E S T S    F O R    C H A R A C T E R    C L A S S #####\n");
     }
     @Before
     public void init(){
@@ -202,11 +202,14 @@ public class Test1 {
     @Test
     public void testFlokeszToBack2(){
         System.out.println("Testing player Apply Backward...");
-        System.out.print("Test 10 times the backed parameter");
-        for(int i = 0; i < 10; i++)
+        System.out.println("Test 50 times the backed parameter");
+        for(int i = 0; i < 50; i++){
             flokesz.applyBackward(1);
+            System.out.print("#");
+        }
+            
         
-        Assert.assertEquals(flokesz.getBacked(), -10);
+        Assert.assertEquals(-50, flokesz.getBacked());
         
         System.out.println("[OK]");
     }
@@ -216,11 +219,12 @@ public class Test1 {
     @Test
     public void testFlokeszToBack3(){
         System.out.println("Testing player Apply Backward...");
-        System.out.print("Test 10 times the back motion to Right...");
-        for(int i = 0; i < 10; i++){
+        System.out.println("Test 50 times the back motion to Right...");
+        for(int i = 0; i < 50; i++){
             flokesz.applyBackward(1);
+            System.out.print("#");
         }
-        Double value1 = 600.0;
+        Double value1 = 2600.0;
         Double value2 = flokesz.getPlayer().getX();
         Assert.assertEquals(value1, value2);
         System.out.println("[OK]");
@@ -232,11 +236,12 @@ public class Test1 {
     @Test
     public void testFlokeszToBack4(){
         System.out.println("Testing player Apply Backward...");
-        System.out.print("Test 10 times the back motion to Left...");
-        for(int i = 0; i < 10; i++){
+        System.out.println("Test 50 times the back motion to Left...");
+        for(int i = 0; i < 50; i++){
             flokesz.applyBackward(-1);
+            System.out.print("#");
         }
-        Double value1 = -400.0;
+        Double value1 = -2400.0;
         Double value2 = flokesz.getPlayer().getX();
         Assert.assertEquals(value1, value2);
         System.out.println("[OK]");
@@ -248,10 +253,11 @@ public class Test1 {
     @Test
     public void testFlokeszWeaponToBack1(){
         System.out.println("Testing player's weapon Apply Backward...");
-        System.out.print("Test 10 times the back motion to Left...");
-        Double value1 = flokesz.getWeapon().getWeapon().getX() + 10 * 50;
-        for(int i = 0; i < 10; i++){
+        System.out.println("Test 50 times the back motion to Left...");
+        Double value1 = flokesz.getWeapon().getWeapon().getX() + 50 * 50;
+        for(int i = 0; i < 50; i++){
             flokesz.applyBackward(1);
+            System.out.print("#");
         }
         
         Double value2 = flokesz.getWeapon().getWeapon().getX();
@@ -266,10 +272,11 @@ public class Test1 {
     @Test
     public void testFlokeszWeaponToBack2(){
         System.out.println("Testing player's weapon Apply Backward...");
-        System.out.print("Test 10 times the back motion to Left...");
-        Double value1 = flokesz.getWeapon().getWeapon().getX() - 10 * 50;
-        for(int i = 0; i < 10; i++){
+        System.out.println("Test 50 times the back motion to Left...");
+        Double value1 = flokesz.getWeapon().getWeapon().getX() - 50 * 50;
+        for(int i = 0; i < 50; i++){
             flokesz.applyBackward(-1);
+            System.out.print("#");
         }
         
         Double value2 = flokesz.getWeapon().getWeapon().getX();
@@ -283,11 +290,12 @@ public class Test1 {
     */
     @Test
     public void testFlokeszKillCountInc(){
-        System.out.print("Testing player Score Increaser...");
+        System.out.println("Testing player Score Increaser...");
         
-        for(int i = 1; i < 300; i++){
+        for(int i = 1; i < 50; i++){
             flokesz.incKillCount();
             Assert.assertEquals(flokesz.getKillCount(), i);
+            System.out.print("#");
         }
         
         System.out.println("[OK]");
