@@ -24,7 +24,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import de.saxsys.javafx.test.JfxRunner;
-import javafx.scene.image.Image;
 import org.junit.runner.RunWith;
 
 /**
@@ -58,7 +57,7 @@ public class Test1 {
     public void testCharacterHP(){
         System.out.print("Testing player CurrHp...");
         Float hp = new Float(100);
-        Float flokeszHp = new Float(flokesz.getHp());
+        Float flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);
         System.out.println("[OK]");
     }
@@ -70,11 +69,11 @@ public class Test1 {
         System.out.print("Testing player HP Modification...");
         Float hp = new Float(80);
         flokesz.setHp(-20);
-        Float flokeszHp = new Float(flokesz.getHp());
+        Float flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);
         hp = new Float(120);
         flokesz.setHp(40);
-        flokeszHp = new Float(flokesz.getHp());
+        flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);
         System.out.println("[OK]");
     }
@@ -84,8 +83,8 @@ public class Test1 {
      */
     public void testFlokeszBacked(){
         System.out.print("Testing player Back Counter...");
-        Integer FlokeszBacked = new Integer(flokesz.getBacked());
-        Integer value = new Integer(0);
+        Integer FlokeszBacked = flokesz.getBacked();
+        Integer value = 0;
         Assert.assertEquals(value, FlokeszBacked);
         System.out.println("[OK]");
     }
@@ -104,8 +103,8 @@ public class Test1 {
      */
     public void testFlokeszKillCounter(){
         System.out.print("Testing player KillCounter...");
-        Integer FlokeszKill = new Integer(flokesz.getKillCount());
-        Integer value = new Integer(0);
+        Integer FlokeszKill = flokesz.getKillCount();
+        Integer value = 0;
         Assert.assertEquals(FlokeszKill, value);
         System.out.println("[OK]");
     }
@@ -169,49 +168,127 @@ public class Test1 {
      * Megnezem ezutan megint balra
      */
     @Test
-    public void testFlokeszToBack(){
+    public void testFlokeszToBack1(){
         System.out.print("Testing player Apply Backward...");
         Double currLocPlayer = flokesz.getPlayer().getX();
         Double currLocPlayerWeapon = flokesz.getWeapon().getWeapon().getX();
-        
+        //Jobbra
         flokesz.applyBackward(1);
         Double currLocPlayerMod = flokesz.getPlayer().getX();
         Double currLocPlayerWeaponMod = flokesz.getWeapon().getWeapon().getX();
-        
+        //Teszt
         Assert.assertNotEquals(currLocPlayer, currLocPlayerMod);
         Assert.assertNotEquals(currLocPlayerWeaponMod, currLocPlayerWeapon);
-        
+        //Balra(alaphelyzet)
         flokesz.applyBackward(-1);
         currLocPlayerMod = flokesz.getPlayer().getX();
         currLocPlayerWeaponMod = flokesz.getWeapon().getWeapon().getX();
-        
+        //Teszt
         Assert.assertEquals(currLocPlayer, currLocPlayerMod);
         Assert.assertEquals(currLocPlayerWeaponMod, currLocPlayerWeapon);
-        
+        //Balra megint
         flokesz.applyBackward(-1);
         currLocPlayerMod = flokesz.getPlayer().getX();
         currLocPlayerWeaponMod = flokesz.getWeapon().getWeapon().getX();
-        
+        //Teszt
         Assert.assertNotEquals(currLocPlayer, currLocPlayerMod);
         Assert.assertNotEquals(currLocPlayerWeaponMod, currLocPlayerWeapon);
         
         System.out.println("[OK]");
     }
     /**
-     * A karakterk epmodosito fuggveny tesztelese.
+     * A karakter hatralokesenek erzekelese a backed valtozonak a figyelesevel.
+     */
+    @Test
+    public void testFlokeszToBack2(){
+        System.out.println("Testing player Apply Backward...");
+        System.out.print("Test 10 times the backed parameter");
+        for(int i = 0; i < 10; i++)
+            flokesz.applyBackward(1);
+        
+        Assert.assertEquals(flokesz.getBacked(), -10);
+        
+        System.out.println("[OK]");
+    }
+    /**
+     * Hatralokes utan X koordinata figyelese pozitiv irany.
+     */
+    @Test
+    public void testFlokeszToBack3(){
+        System.out.println("Testing player Apply Backward...");
+        System.out.print("Test 10 times the back motion to Right...");
+        for(int i = 0; i < 10; i++){
+            flokesz.applyBackward(1);
+        }
+        Double value1 = 600.0;
+        Double value2 = flokesz.getPlayer().getX();
+        Assert.assertEquals(value1, value2);
+        System.out.println("[OK]");
+    }
+    
+    /**
+     * Hatralokes utan X koordinata figyelese negativ irany.
+     */
+    @Test
+    public void testFlokeszToBack4(){
+        System.out.println("Testing player Apply Backward...");
+        System.out.print("Test 10 times the back motion to Left...");
+        for(int i = 0; i < 10; i++){
+            flokesz.applyBackward(-1);
+        }
+        Double value1 = -400.0;
+        Double value2 = flokesz.getPlayer().getX();
+        Assert.assertEquals(value1, value2);
+        System.out.println("[OK]");
+    }
+    /**
+     * Hatralokes utan X koordinata figyelese pozitiv irany.
+     * (fegyver)
+     */
+    @Test
+    public void testFlokeszWeaponToBack1(){
+        System.out.println("Testing player's weapon Apply Backward...");
+        System.out.print("Test 10 times the back motion to Left...");
+        Double value1 = flokesz.getWeapon().getWeapon().getX() + 10 * 50;
+        for(int i = 0; i < 10; i++){
+            flokesz.applyBackward(1);
+        }
+        
+        Double value2 = flokesz.getWeapon().getWeapon().getX();
+        Assert.assertEquals(value1, value2);
+        System.out.println("[OK]");
+    }
+    
+       /**
+     * Hatralokes utan X koordinata figyelese negativ irany.
+     * (fegyver)
+     */
+    @Test
+    public void testFlokeszWeaponToBack2(){
+        System.out.println("Testing player's weapon Apply Backward...");
+        System.out.print("Test 10 times the back motion to Left...");
+        Double value1 = flokesz.getWeapon().getWeapon().getX() - 10 * 50;
+        for(int i = 0; i < 10; i++){
+            flokesz.applyBackward(-1);
+        }
+        
+        Double value2 = flokesz.getWeapon().getWeapon().getX();
+        Assert.assertEquals(value1, value2);
+        System.out.println("[OK]");
+    }
+    
+    
+    /**
+     * A karakter score novelesenek a tesztje.
     */
     @Test
-    public void testImageMod(){
-        System.out.print("Testing player Image Modification...");
-        Image image1 = new Image(getClass().getClassLoader().getResource("hd/Flokesz/run/flokesz_run.gif").toString());
-        flokesz.setImg("hd/Flokesz/run/flokesz_run.gif");
-        Assert.assertEquals(image1, flokesz.getImg());
+    public void testFlokeszKillCountInc(){
+        System.out.print("Testing player Score Increaser...");
         
-        
-        image1 = new Image(getClass().getClassLoader().getResource("hd/Flokesz/run/flokesz_run_R.gif").toString());
-        flokesz.setImg("hd/Flokesz/run/flokesz_run_R.gif");
-        Assert.assertEquals(image1, flokesz.getImg());
-        
+        for(int i = 1; i < 300; i++){
+            flokesz.incKillCount();
+            Assert.assertEquals(flokesz.getKillCount(), i);
+        }
         
         System.out.println("[OK]");
     }
