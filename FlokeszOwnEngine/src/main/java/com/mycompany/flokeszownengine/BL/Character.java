@@ -24,19 +24,69 @@ import javafx.scene.image.ImageView;
  * @author kiss
  */
 public class Character {
+    /**
+     * A jatekos kepet tartalmazo ImageView.
+     */
     public ImageView player = new ImageView();
+    /**
+     * A jatekos kepe.
+     * Ebbe toltodnek bele a gifek.
+     */
     Image image1 = null;
+    /**
+     * A jatekoshoz tartozo fegyver objektum.
+     */
     public Weapon fegyver;
-    private int currHp, maxHp;
+    /**
+     * Az aktualis eletet tartalmazo valtozo.
+     */
+    private int currHp;
+    /**
+     * Azt mutatja, hogy a jatekos melyik iranyba nez.
+     * Ha igaz erteke van, akkor a jatekos jobbra nez.
+     */
     boolean jobbra = true;
+    /**
+     * Ha nem mozdultunk meg, akkor pihenunnk.
+     * Ez alapjan toltodik be a piheneshez tartozo gif.
+     */
     boolean rest = true;
+    /**
+     * Azt nezi meg, hogy pihenunk-e mar.
+     * Ha pihenunk akkor nem irjuk felul a gifet.
+     */
     boolean rested = true;
+    /**
+     * A hatralokeshez tartozo szamlalo.
+     */
     int backed = 0;
+    /**
+     * Meg adja, hogy a jatekos melyik mapon van.
+     */
     public String map;
+    /**
+     * A score tarolasara szolgal.
+     */
     private int killCounter = 0;
+    /**
+     * A jobbra es a balra menes elozoleges firssiteset nezi.
+     * Ha valamelyik igaz akkor azt jelenti, hogy az adott pozicio mar updatelve lett.
+     */
     public boolean jobbraMent = false, balraMent = false;
+    /**
+     * A stage1-re valo atjutas lehetoseget adja meg.
+     */
     boolean pass = false;
+    /**
+     * Ut-e a karakter.
+     */
     boolean utes = false;
+    /**
+     * A Character osztaly konstruktora.
+     * ->Kep betoltes.
+     * ->Valtozok inicializalasa.
+     * ->Pozicionalas.
+     */
     public Character(){
         currHp = 100;
         killCounter = 0;

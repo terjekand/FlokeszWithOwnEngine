@@ -24,13 +24,45 @@ import java.util.Random;
  * @author kiss
  */
 public class Bear {
+    /**
+     * Az a kepfile amit folyton frissitek.
+     * Ebbe kerulnek a gifek
+     */
     Image image1;
+    /**
+     * A kepet megjelenito ImageView.
+     */
     ImageView bear;
+    /**
+     * A hatralokest figyelo valtozo.
+     */
     int knocked;
+    /**
+     * Ket poziciot tartalmaz.
+     * Random szam alapjan eloall, hogy melyik oldalra spawnol a medve
+     */
     double bearPoz[];
+    /**
+     * Azt a random szamot tarolja, ami beallitja a poziciot.
+     */
     int actPoz;
+    /**
+     * A medve mozgasi sebessege.
+     * Ha negativ szam akkor jobbrol, ha pozitiv akkor balrol jon a medve.
+     * Poziciotol fugg!
+     */
     float speed;
+    /**
+     * A medve aktualis elete.
+     * Alapertelmezett ertek 100;
+     */
     int health;
+    
+    /**
+     * A medve osztalyom konstruktora.
+     * Inicializalasra kerulnek a bizonyos ertekek.
+     * A kep a poziciotol fuggoen betoltodik.
+     */
     public Bear(){
         health = 100;
         speed = -6;

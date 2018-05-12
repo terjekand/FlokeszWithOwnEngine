@@ -26,8 +26,21 @@ import javafx.stage.Stage;
  */
 
 public class Main extends Application{
+    /**
+     * Egy adatbaziskezelo peldanyositasa.
+     * A connectionhoz.
+     */
     private static final DataBase DB = DataBase.getDbPeldany();
+    /**
+     * A jatekmotor letrehozasa.
+     */
     GameEngine MyEngine;
+    /**
+     * A main fuggveny.
+     * Ez a belepesi pont, ez inditja a start fuggvenyt,
+     * valamint kapcsolodik az adatbazishoz.
+     * @param args Argomentumok.
+     */
     public static void main(String[] args){
          try {
             DB.connectDB();

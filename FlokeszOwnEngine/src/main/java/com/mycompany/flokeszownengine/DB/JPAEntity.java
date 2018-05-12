@@ -28,6 +28,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * @author Dávid
+ */
+
 @Entity
 @Table(name = "SCORES", schema = "MY_SCHEMA_NAME")
 

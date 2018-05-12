@@ -1,3 +1,18 @@
+/*
+ * Copyright 2018 Kiss Dávid.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.mycompany.flokeszownengine.DB;
 
 import java.util.List;
@@ -8,13 +23,22 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * @author Dávid
+ */
 @Slf4j
 public class DataBase {
-
+    /**
+     * Osztalyelem peldanyositasa.
+     */
     private static final DataBase DB_PELDANY = new DataBase();
-
+    /**
+     * Az adatbazis neve.
+     */
     @PersistenceContext(unitName = "FlokeszDB")
+    /**
+     * EntityManager letrehozasa.
+     */
     private EntityManager em;
 
     /**
@@ -146,7 +170,12 @@ public class DataBase {
 //---------------------NamedQueries------------------------
 //---------------------------------------------------------
 
-    
+    /**
+     * Az osszes score lekerese csokkeno sorrendben.
+     * @return Scoreokat tartalmazo lista
+     * @throws IllegalStateException Ha nem jo az adatbazis.
+     * @throws Exception Egyeb kivietel.
+     */
     public List<JPAEntity> getAllOrderedByScore() throws IllegalStateException, Exception {
 
         if (!connected()) {
@@ -156,7 +185,12 @@ public class DataBase {
             List<JPAEntity> lista = (List<JPAEntity>) em.createNamedQuery("JPAEntity.getAllOrderedByScore").getResultList();
             return lista;
     }
-    
+    /**
+     * Vissza adja a HighScore-okat tartalmazo listat.
+     * @return Azert lista, mert egyszerre tobb ugyan olyan score lehet.
+     * @throws IllegalStateException ha adatbazis kapcsolat nincs.
+     * @throws Exception egyeb kivetelek elkapasa
+     */
     public List<Integer> getHighScore () throws  IllegalStateException, Exception{
          if (!connected()) {
             throw new IllegalStateException("Nincs adatbázis-kapcsolat!");

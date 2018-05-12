@@ -25,18 +25,45 @@ import javafx.scene.text.Font;
  * @author kiss
  */
 public class GameEngine {
+    
+    /**
+     * Az adatbazis kezelo peldanyositasa.
+     */
     private static final DataBase DB = DataBase.getDbPeldany();
+    /**
+     * JPA entitas letrehozasa.
+     */
     private JPAEntity flokeszEntity;
     
+    /**
+     * A jatek inditasanak ideje.
+     */
     long startNanoTime;
+    /**
+     * Az elso palya letrehozasa.
+     */
     Stage1 stage1;
-    
-
+    /**
+     * A billenttyuzet kezelesert felelos objektum letrehozasa.
+     */
     Input input;
+    /**
+     * A megjelenito ablak letrehozasa.
+     */
     Window ablak;
-    boolean alreadyStopped = false;
+    /**
+     * A fo karakterunk letrehozasa.
+     */
     public Character flokesz;
-
+    /**
+     * A GameEngine osztaly konstruktora.
+     * Stage1 -> peldanyositasa.
+     * flokesz -> peldanyositas.
+     * ablak -> peldanyositasa.
+     * startNanoTime -> a letrehozas idopontja.
+     * input -> peldanyositas.
+     * billentyuzet kezeles beallitasa.
+     */
     public GameEngine(){
         stage1 = new Stage1();
         flokesz = new Character();
@@ -54,9 +81,8 @@ public class GameEngine {
     }
     /**
     * A jatek magja.
-    * Ezzel indul el a jatek, a benne talalhato AnimationTimer felelos a folyamatos futasert
-    * Minden futas kozben torteno fuggoseg itt lesz levizsgalva.
-    * 
+    * Ezzel indul el a jatek, a benne talalhato AnimationTimer felelos a folyamatos futasert.
+    * Minden futas kozben torteno fuggoseg itt lesz levizsgalva. 
     */
     public void MainLoop(){
         new AnimationTimer() {

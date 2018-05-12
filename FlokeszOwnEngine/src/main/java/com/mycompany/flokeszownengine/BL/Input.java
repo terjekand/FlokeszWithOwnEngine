@@ -23,9 +23,19 @@ import javafx.scene.input.KeyEvent;
  * @author kiss
  */
 public class Input {
-    public boolean A_Key, D_Key;
+    /**
+     * A Character osztaly egy eleme.
+     * Arra hasznaljuk, hogy ra allitsuk az erteket a GameEngine-ben levojere.
+     */
     Character flokesz;
+    /**
+     * Hit-RevHit hez hasznalt szamlalo.
+     */
     int i = 0;
+    /**
+     * Az input osztaly konstruktora.
+     * @param flokesz re allitjuk a sajat flokesz objektumunk erteket.
+     */
     public Input(Character flokesz){
         this.flokesz = flokesz;
     }

@@ -23,8 +23,14 @@ import static java.lang.Math.abs;
  * @author kiss
  */
 public class Menu {
+    /**
+     * A tabla pozicioja es az a tavolsag amin belul efogadjuk az atjutast.
+     */
     private double tablaPoz, tav;
-
+    /**
+     * A menu osztaly konstruktora.
+     * Pozicio es tav inicializalasa
+     */
     public Menu(){
         tav = 100.0;
         tablaPoz = 1280.0;

@@ -30,14 +30,43 @@ import javafx.scene.text.Font;
  * @author kiss
  */
 public class Window{
+    /**
+     * A megjeleniteshez hasznalt Stage.
+     */
     private Stage window;
+    /**
+     * Ez a hatter.
+     * Ezt hasznalom "root" kent, erre hozom letre a scenet.
+     */
     private Pane bg;
+    /**
+     * A megjeleniteshez hasznalt Scene.
+     */
     private Scene scene;
+    /**
+     * Az aktualis palyahoz hasznalt ID.
+     */
     private String stageId;
+    /**
+     * A hatterkepet tarolo ImageView.
+     */
     final ImageView selectedImage;
+    /**
+     * A maga a hatterkep.
+     */
     Image image1;
+    /**
+     * A Scoret tarolo Label.
+     */
     Label scoreBox;
+    /**
+     * Az eletet tarolo Label.
+     */
     Label hpBox;
+    /**
+     * Az osztaly konstruktora.
+     * @param game egy GameEngine peldany, amivel hozza ferunk az osszes komponensehez.
+     */
     public Window(GameEngine game){
         scoreBox = new Label();
         hpBox = new Label("100");

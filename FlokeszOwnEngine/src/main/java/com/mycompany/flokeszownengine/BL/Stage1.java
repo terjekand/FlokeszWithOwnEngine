@@ -22,9 +22,22 @@ import javafx.scene.image.Image;
  * @author kiss
  */
 public class Stage1 {
+    /**
+     * A hatterkep.
+     */
     Image image1;
+    /**
+     * Az enemy letrehozasa.
+     */
     Bear bear;
+    /**
+     * Fut-e az adott palya.
+     */
     boolean run = false;
+    /**
+     * Konstruktor.
+     * Hatterkep betoltese es medve peldanyositasa.
+     */
     public Stage1(){
         bear = new Bear();
         image1 = new Image(getClass().getClassLoader().getResource("hd/bg/maps/1.png").toString());

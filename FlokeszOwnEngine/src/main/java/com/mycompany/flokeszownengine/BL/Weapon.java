@@ -24,10 +24,30 @@ import javafx.scene.image.ImageView;
  * @author kiss
  */
 public class Weapon {
+    /**
+     * A fegyvert megjelenito ImageView.
+     */
     public ImageView weapon = new ImageView();
+    /**
+     * A fegyver kepe.
+     */
     Image image1;
+    /**
+     * Utesi pozicio es sebzes.
+     */
     private int hit_poz,  damage;
+    /**
+     * A fegyver X koordinataja.
+     */
     double x;
+    /**
+     * Konstruktor.
+     * ->Kep
+     * ->Pozicio
+     * ->Sebzes
+     * Beallitasai.
+     * @param x 
+     */
     public Weapon(double x) {
 
         image1 = null;
