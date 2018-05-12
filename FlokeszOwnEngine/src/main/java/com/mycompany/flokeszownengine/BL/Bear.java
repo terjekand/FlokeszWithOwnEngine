@@ -53,6 +53,20 @@ public class Bear {
             speed *= -1;
     }
     /**
+     * A hatralokes merteket adja vissza.
+     * @return az aktuals hatralokes szama.
+     */
+    public int getKnocked() {
+        return knocked;
+    }
+    /**
+     * Beallitja a hatralokest.
+     * @param knocked ennyire allitja be.
+     */
+    public void setKnocked(int knocked) {
+        this.knocked = knocked;
+    }
+    /**
      * A medve eletet kapjuk meg.
      * @return a medve elete
      */
@@ -61,28 +75,28 @@ public class Bear {
     }
     /**
      * Modostijuk a medve eletet.
-     * @param x el modosul
+     * @param x el modosul.
      */
     public void setHealth(int x){
         health = x;
     }
     /**
      * A medvehez tartozo kepet adja vissza.
-     * @return azt az ImageViewet adja vissza amelyet be toltok a scenembe
+     * @return azt az ImageViewet adja vissza amelyet be toltok a scenembe.
      */
     public ImageView getView(){
         return bear;
     }
     /**
      * Kep kinyeres.
-     * @return Megkapjuk, hogy aktualisan melyik kep van betoltve az ImageViewunkba 
+     * @return Megkapjuk, hogy aktualisan melyik kep van betoltve az ImageViewunkba .
      */
     public Image getImage(){
         return image1;
     }
     /**
      * Pozicio kinyeres.
-     * @return A medve aktualis pozicioja
+     * @return A medve aktualis pozicioja.
      */
     public double getPoz(){
         return bear.getX();

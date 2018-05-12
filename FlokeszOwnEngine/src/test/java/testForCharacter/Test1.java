@@ -56,8 +56,8 @@ public class Test1 {
      */
     public void testCharacterHP(){
         System.out.print("Testing player CurrHp...");
-        Float hp = new Float(100);
-        Float flokeszHp = flokesz.getHp();
+        Integer hp = 100;
+        Integer flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);
         System.out.println("[OK]");
     }
@@ -67,11 +67,11 @@ public class Test1 {
      */
     public void testCharacterHPMod(){
         System.out.print("Testing player HP Modification...");
-        Float hp = new Float(80);
+        Integer hp = 80;
         flokesz.setHp(-20);
-        Float flokeszHp = flokesz.getHp();
+        Integer flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);
-        hp = new Float(120);
+        hp = 120;
         flokesz.setHp(40);
         flokeszHp = flokesz.getHp();
         Assert.assertEquals(hp, flokeszHp);

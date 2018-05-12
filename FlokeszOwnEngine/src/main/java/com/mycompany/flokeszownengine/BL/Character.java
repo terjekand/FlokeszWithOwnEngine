@@ -27,7 +27,7 @@ public class Character {
     public ImageView player = new ImageView();
     Image image1 = null;
     public Weapon fegyver;
-    private float currHp, maxHp;
+    private int currHp, maxHp;
     boolean jobbra = true;
     boolean rest = true;
     boolean rested = true;
@@ -171,7 +171,7 @@ public class Character {
      * Aktualis elet visszaadasa.
      * @return az aktualis elet
      */
-    public float getHp(){
+    public int getHp(){
         return currHp;
     }
     /**

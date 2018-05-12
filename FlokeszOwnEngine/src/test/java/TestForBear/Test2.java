@@ -93,19 +93,134 @@ public class Test2 {
         
         System.out.println("[OK]");
     }
+    
     /**
-     * A medve hatralokeset teszteli.
+     * A medve balra torteno hatralokeset teszteli.
      */
     @Test
     public void testBackL(){
-        System.out.print("Testig bear toBackL...");
-        flokesz.getPlayer().setX(400);
-        bear.getView().setX(850);
+        System.out.print("Testig bear toBackL...");//214
+        flokesz.getPlayer().setX(210);
+        bear.getView().setX(0);
         Assert.assertTrue(bear.toBackL(flokesz));
+        
+        flokesz.getPlayer().setX(210);
+        bear.getView().setX(105);
+        Assert.assertTrue(bear.toBackL(flokesz));
+        
+        flokesz.getPlayer().setX(400);
+        bear.getView().setX(105);
+        Assert.assertFalse(bear.toBackL(flokesz));
+        
+        
+        flokesz.getPlayer().setX(400);
+        bear.getView().setX(800);
+        Assert.assertFalse(bear.toBackL(flokesz));
+        System.out.println("[OK]");
+    }
+    
+    
+     /**
+     * A medve jobbra torteno hatralokeset teszteli.
+     */
+    @Test
+    public void testBackR(){
+        System.out.print("Testig bear toBackR...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        
+        bear.getView().setX(70);
+        flokesz.getPlayer().setX(0);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        
+        flokesz.getPlayer().setX(400);
+        bear.getView().setX(105);
+        Assert.assertFalse(bear.toBackR(flokesz));
+        
+        
+        flokesz.getPlayer().setX(400);
+        bear.getView().setX(800);
+        Assert.assertFalse(bear.toBackR(flokesz));
+        System.out.println("[OK]");
+    }
+    
+    /**
+     * Az update elso tesztje.
+     * A tesztnel a koncked valtozo beallitasat nezem.
+     */
+    @Test
+    public void testUpdate1(){
+        System.out.print("Testig bear Update1...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        bear.update(flokesz);
+        Assert.assertEquals(bear.getKnocked(), 8);
+        System.out.println("[OK]");        
+    }
+    
+    /**
+     * Az update masodik tesztje.
+     * A tesztnel a medve elet csokkeneset nezem.
+     * Flokesz utes = false eseten.
+     */
+    @Test
+    public void testUpdate2(){
+        System.out.print("Testig bear Update2...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        bear.update(flokesz);
+        Assert.assertEquals(bear.getHealth(), 100);
+        System.out.println("[OK]");
+    }
+    
+    /**
+     * Az update masodik tesztje.
+     * A tesztnel a medve elet csokkeneset nezem.
+     * Flokesz utes = true eseten.
+     */
+    @Test
+    public void testUpdate3(){
+        System.out.print("Testig bear Update3...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        flokesz.setUtes(true);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        bear.update(flokesz);
+        Assert.assertEquals(bear.getHealth(), 50);
+        
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        flokesz.setUtes(true);
+        bear.setKnocked(0);
+        bear.update(flokesz);
+        Assert.assertEquals(bear.getHealth(), 0);
         
         System.out.println("[OK]");
     }
     
+    
+    /**
+     * Az update masodik tesztje.
+     * A tesztnel a karakter elet csokkeneset nezem.
+     * Flokesz utes = true eseten.
+     */
+    @Test
+    public void testUpdate4(){
+        System.out.print("Testig bear Update4...");//214
+        for(int i = 80; i > 0; i -= 20){
+            bear.getView().setX(140);
+            flokesz.getPlayer().setX(0);
+            Assert.assertTrue(bear.toBackR(flokesz));
+            bear.setKnocked(0);
+            bear.update(flokesz);
+            Assert.assertEquals(i, flokesz.getHp());
+        }
+        
+        System.out.println("[OK]");
+    }
     
     
     
