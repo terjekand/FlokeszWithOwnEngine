@@ -19,10 +19,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import static java.lang.Math.abs;
 import java.util.Random;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Bear {
     /**
      * Az a kepfile amit folyton frissitek.
@@ -83,6 +85,7 @@ public class Bear {
         knocked = 0;
         if(actPoz == 0)
             speed *= -1;
+        log.trace("Create Bear");
     }
     /**
      * A hatralokes merteket adja vissza.
@@ -142,6 +145,7 @@ public class Bear {
         else
             bear.setX(bear.getX() - 50);
         knocked--;
+        log.trace("Bear -> backed");
     }
     /**
      * A medve sebessege.
@@ -160,6 +164,7 @@ public class Bear {
      * @return olyan logikai ertek amely visszaadja, hogy hatra kell e lokni a medvet
      */
     public boolean toBackR(Character flokesz){
+        log.trace("toBackR");
         return (abs(flokesz.getPoz() + flokesz.getImg().getWidth() - bear.getX()) < 5) 
                 || (abs(flokesz.getPoz() + flokesz.getImg().getWidth() / 2 - bear.getX()) < 5);
     }
@@ -169,6 +174,7 @@ public class Bear {
      * @return olyan logikai ertek amely megadja, hogy hatra kell-e lokni a medvet
      */
     public boolean toBackL(Character flokesz){
+        log.trace("toBackL");
          return (abs(flokesz.getPoz() - (bear.getX() + image1.getWidth())) < 5) 
                 || (abs(flokesz.getPoz()  - (bear.getX() + image1.getWidth() / 2)) < 5); 
     }
@@ -185,20 +191,29 @@ public class Bear {
             if(toBackR(flokesz)
               || toBackL(flokesz)
                     ){
+                log.trace("Set koncked to 8");
             knocked = 8;
             if(!flokesz.getUtes()){
+                log.trace("Character set Backed and Hp decreased");
                 flokesz.setBacked(8);
                 flokesz.setHp(-20);
             }
             else{
+                log.trace("Bear Hp-Weapon DMG");
                 health -= flokesz.getWeapon().getDamage();
             }
         }
-        else
-            bear.setX(bear.getX() + speed);
+            else{
+                log.trace("Bear -> walk");
+                bear.setX(bear.getX() + speed);
+            }
+                
         }
-        else
+        else{
             back();
+            log.trace("Bear -> apply BackMovement");
+        }
+            
         
     }
 }

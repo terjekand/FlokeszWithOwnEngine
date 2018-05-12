@@ -19,10 +19,12 @@ package com.mycompany.flokeszownengine.BL;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Character {
     /**
      * A jatekos kepet tartalmazo ImageView.
@@ -97,7 +99,7 @@ public class Character {
         fegyver = new Weapon(130);
         map = "Menu";
         //TODO HP-BAR
-
+        log.trace("Character constructor called");
     }
     /**
      * a Jobbrameno valtozo erteket adja vissza.
@@ -160,6 +162,7 @@ public class Character {
         else
             fegyver.weapon.setX(x + 60);
         player.setX(x);
+        log.trace("Player and Weapon X position modified");
     }
     /**
      * Karakter poziciojanak megkapasa.
@@ -174,6 +177,7 @@ public class Character {
      * @param img re allitom az imageview kepet
      */
     public void setImg(String img){
+        log.trace("Character -> Load new Gif");
        image1 = new Image(getClass().getClassLoader().getResource(img).toString());
     }
     /**
@@ -205,12 +209,14 @@ public class Character {
      * @return az olesek szama
      */
     public int getKillCount(){
+        log.trace("Character -> Check store");
         return killCounter;
     }
     /**
      * Az olesek szamanak novelese.
     */
     public void incKillCount(){
+        log.trace("Character -> Increase Score");
         killCounter++;
     }
     /**
@@ -228,8 +234,9 @@ public class Character {
             player.setX(player.getX() + 50);
             fegyver.getWeapon().setX(fegyver.getWeapon().getX() + 50);
         }
-        
+        log.trace("Character -> applyBackward");
         backed--;
+        log.trace("Character ->Decrease backed");
         
     }
     /**
@@ -266,6 +273,7 @@ public class Character {
                     if(!jobbraMent)
                         setImg("hd/Flokesz/run/flokesz_run.gif");
                     player.setImage(image1);
+                    log.trace("Character -> Run to Right Gif");
                 }
 
                 else{
@@ -274,6 +282,7 @@ public class Character {
                 if(!balraMent)
                    setImg("hd/Flokesz/run/flokesz_run_R.gif");
                    player.setImage(image1);
+                   log.trace("Character -> Run to Left Gif");
                 }
             }
         else{
@@ -286,6 +295,7 @@ public class Character {
                 else
                     setImg("hd/Flokesz/rest/flokesz_R.gif");
                 player.setImage(image1);
+                log.trace("Character -> Rest");
             }
             
         }

@@ -25,10 +25,12 @@ import com.mycompany.flokeszownengine.BL.Character;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Window{
     /**
      * A megjeleniteshez hasznalt Stage.
@@ -84,7 +86,9 @@ public class Window{
         bg.setId("alap");
         bg.getChildren().addAll(selectedImage, hpBox, game.flokesz.player, game.flokesz.fegyver.weapon);
         scene = new Scene(bg, 1366, 768);
+        log.trace("A Window Created");
         window.show();
+        log.trace("A Window displayed");
         //window.setFullScreen(true);
 
     }

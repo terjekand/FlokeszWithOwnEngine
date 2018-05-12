@@ -20,11 +20,12 @@ import com.mycompany.flokeszownengine.DB.DataBase;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
-
+@Slf4j
 public class Main extends Application{
     /**
      * Egy adatbaziskezelo peldanyositasa.
@@ -44,20 +45,25 @@ public class Main extends Application{
     public static void main(String[] args){
          try {
             DB.connectDB();
+            log.trace("Connect to database");
 
             launch(args);
 
         } catch (Exception e) {
-            //LOGOLNI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            log.error("Problem with the database");
         } finally {
             DB.disconnectDB();
+            log.trace("Disconnect form the database");
         }
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         MyEngine = new GameEngine();
+        log.trace("Create new engine");
+        log.trace("Call Engine MainLoop");
         MyEngine.MainLoop();
+        
 
     }
 }

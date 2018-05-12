@@ -18,10 +18,12 @@
 package com.mycompany.flokeszownengine.BL;
 
 import static java.lang.Math.abs;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Menu {
     /**
      * A tabla pozicioja es az a tavolsag amin belul efogadjuk az atjutast.
@@ -34,6 +36,7 @@ public class Menu {
     public Menu(){
         tav = 100.0;
         tablaPoz = 1280.0;
+        log.trace("Menu created");
     }
     /**
     * Vissza adja a tabla poziciojat a mapon.
@@ -52,6 +55,7 @@ public class Menu {
      */
     
     public boolean isNearTheTable(Character flokesz){
+        log.trace("Table and Character Dist Checker");
         return (abs(flokesz.player.getX() - tablaPoz) <= tav);
     }
 }

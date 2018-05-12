@@ -18,10 +18,12 @@ package com.mycompany.flokeszownengine.BL;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Input {
     /**
      * A Character osztaly egy eleme.
@@ -47,11 +49,13 @@ public class Input {
                     if(i == 0){
                         flokesz.fegyver.hitR();
                         i++;
+                        log.trace("Input - > doHitAction -> hit to Right(rotate 90)");
                     }
                         
                     else{
                         flokesz.fegyver.weapon.setRotate(0);
                         i = 0;
+                        log.trace("Input - > doHitAction -> hit to Right(rotate 0)");
                     }
                     
                 }                
@@ -59,11 +63,14 @@ public class Input {
                  if(i == 0){
                         flokesz.fegyver.hitL();
                         i++;
+                        log.trace("Input - > doHitAction -> hit to Left(rotate - 90)");
                     }
                         
                     else{
                         flokesz.fegyver.weapon.setRotate(0);
                         i = 0;
+                        log.trace("Input - > doHitAction -> hit to Left(rotate 0)");
+                        
                     }  
                 }
     }
@@ -72,9 +79,13 @@ public class Input {
     */
     public void applyLeftMovement(){
                 flokesz.fegyver.weapon.setRotate(0);
+                log.trace("Input - > applyLeftMovement -> Weapon rotate -> 0");
                 flokesz.setX(flokesz.getPoz() - 15);
+                log.trace("Input - > applyLeftMovement -> mod pozition");
                 flokesz.jobbra = false;
+                log.trace("Input - > applyLeftMovement -> character -> jobbra = false");
                 flokesz.rest = false;
+                log.trace("Input - > applyLeftMovement -> character - >rest -> false");
                 i = 0;
     }
     /**
@@ -82,9 +93,13 @@ public class Input {
     */
     public void applyRightMovement(){
                 flokesz.fegyver.weapon.setRotate(0);
+                log.trace("Input - > applyRightMovement -> Weapon rotate -> 0");
                 flokesz.setX(flokesz.getPoz() + 15);
+                log.trace("Input - > applyRightMovement -> mod pozition");
                 flokesz.jobbra = true;
+                log.trace("Input - > applyRightMovement -> character -> jobbra = true");
                 flokesz.rest = false;
+                log.trace("Input - > applyRightMovement -> character - >rest -> false");
                 i = 0;
     }
     /**
@@ -92,8 +107,12 @@ public class Input {
      */
     public void tryToPass(){
         Menu menu = new Menu();
-        if(menu.isNearTheTable(flokesz))
+        log.trace("Try to Pass");
+        if(menu.isNearTheTable(flokesz)){
             flokesz.setPass(true);
+            log.trace("Pass Rights gained");
+        }
+            
     }
     /**
     * A billentyuzet lenyomas erzekelese.
@@ -102,22 +121,27 @@ public class Input {
             keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                  tryToPass();
+                 log.trace("Enter pressed");
             }
             if (keyEvent.getCode() == KeyCode.SPACE) {
                 doHitAction();
                 flokesz.setUtes(true);
+                log.trace("Space pressed");
             }
             if (keyEvent.getCode() == KeyCode.A) {
                 applyLeftMovement();
+                log.trace("A pressed");
             }
             if (keyEvent.getCode() == KeyCode.D) {
                 applyRightMovement();
+                log.trace("D pressed");
 
             }
             if (keyEvent.getEventType() == KeyEvent.KEY_RELEASED){
                 flokesz.rest = true; 
                 flokesz.fegyver.weapon.setRotate(0);
                 flokesz.setUtes(false);
+                log.trace("Key Released func Called");
             }    
         };
 }

@@ -16,11 +16,12 @@
 package com.mycompany.flokeszownengine.BL;
 
 import javafx.scene.image.Image;
-
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Stage1 {
     /**
      * A hatterkep.
@@ -41,6 +42,7 @@ public class Stage1 {
     public Stage1(){
         bear = new Bear();
         image1 = new Image(getClass().getClassLoader().getResource("hd/bg/maps/1.png").toString());
+        log.trace("Stage1 -> created");
     }
     /**
      * Az ellenseg kinyerese a palyarol.
@@ -88,8 +90,10 @@ public class Stage1 {
     public void update(Character flokesz){
         bear.update(flokesz);
         if(flokesz.getBacked() > 0){
+            log.trace("Character -> applyBackward called...");
             flokesz.applyBackward(bear.getSpeed());
         }
+        log.trace("Stage1 updated");
     }
     
 }

@@ -19,10 +19,12 @@ package com.mycompany.flokeszownengine.BL;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import lombok.extern.slf4j.Slf4j;
 /**
  *
  * @author kiss
  */
+@Slf4j
 public class Weapon {
     /**
      * A fegyvert megjelenito ImageView.
@@ -49,7 +51,7 @@ public class Weapon {
      * @param x 
      */
     public Weapon(double x) {
-
+         
         image1 = null;
         image1 = new Image(getClass().getClassLoader().getResource("hd/weapon/boko.png").toString());
         weapon.setImage(image1);
@@ -58,6 +60,7 @@ public class Weapon {
         this.x = x + 15;
         weapon.setX(this.x);
         weapon.setY(485);
+        log.trace("A Weapon Created");
     }
     /**
      * Az objektum helyzetenek meghatarozasa.
@@ -78,6 +81,7 @@ public class Weapon {
      */
     public void hitR(){
         weapon.setRotate(90);
+        log.trace("Hit to R");
     }
     /**
      * Balra utunk.
@@ -85,6 +89,7 @@ public class Weapon {
     public void hitL(){
         
         weapon.setRotate(-90); 
+        log.trace("Hit to L");
     }
     /**
      * ImageView megszerzese.
