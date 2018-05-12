@@ -143,9 +143,9 @@ public class GameEngine {
                     try {
                         DB.save(flokeszEntity);
                     } catch (IllegalArgumentException ex) {
-                        log.error("Exception: " + ex);
+                        log.error("Exception: ", ex);
                     } catch (Exception ex) {
-                        log.error("Exception: " + ex);
+                        log.error("Exception: ", ex);
                     }
                     log.trace("Game over");
                 }

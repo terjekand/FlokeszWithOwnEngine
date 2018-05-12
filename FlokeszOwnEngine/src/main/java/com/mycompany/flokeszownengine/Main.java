@@ -50,7 +50,7 @@ public class Main extends Application{
             launch(args);
 
         } catch (Exception e) {
-            log.error("Problem with the database");
+            log.error("Problem with the database", e);
         } finally {
             DB.disconnectDB();
             log.trace("Disconnect form the database");
