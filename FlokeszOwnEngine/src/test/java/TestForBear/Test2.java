@@ -156,7 +156,7 @@ public class Test2 {
         flokesz.getPlayer().setX(0);
         Assert.assertTrue(bear.toBackR(flokesz));
         bear.update(flokesz);
-        Assert.assertEquals(bear.getKnocked(), 8);
+        Assert.assertEquals(8, bear.getKnocked());
         System.out.println("[OK]");        
     }
     
@@ -172,12 +172,12 @@ public class Test2 {
         flokesz.getPlayer().setX(0);
         Assert.assertTrue(bear.toBackR(flokesz));
         bear.update(flokesz);
-        Assert.assertEquals(bear.getHealth(), 100);
+        Assert.assertEquals(100, bear.getHealth());
         System.out.println("[OK]");
     }
     
     /**
-     * Az update masodik tesztje.
+     * Az update harmadik tesztje.
      * A tesztnel a medve elet csokkeneset nezem.
      * Flokesz utes = true eseten.
      */
@@ -189,21 +189,21 @@ public class Test2 {
         flokesz.setUtes(true);
         Assert.assertTrue(bear.toBackR(flokesz));
         bear.update(flokesz);
-        Assert.assertEquals(bear.getHealth(), 50);
+        Assert.assertEquals(50, bear.getHealth());
         
         bear.getView().setX(140);
         flokesz.getPlayer().setX(0);
         flokesz.setUtes(true);
         bear.setKnocked(0);
         bear.update(flokesz);
-        Assert.assertEquals(bear.getHealth(), 0);
+        Assert.assertEquals(0, bear.getHealth());
         
         System.out.println("[OK]");
     }
     
     
     /**
-     * Az update masodik tesztje.
+     * Az update negyedik tesztje.
      * A tesztnel a karakter elet csokkeneset nezem.
      * Flokesz utes = true eseten.
      */
@@ -222,6 +222,42 @@ public class Test2 {
         System.out.println("[OK]");
     }
     
+    /**
+     * Az update otodik tesztje.
+     * A tesztnel a karakter knocked csokkeneset nezem.
+     * Backed() ben csokkentve
+     */
+    @Test
+    public void testUpdate5(){
+        System.out.print("Testig bear Update5...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        Assert.assertTrue(bear.toBackR(flokesz));
+        bear.update(flokesz);
+        Assert.assertEquals(8, bear.getKnocked());
+        
+        bear.update(flokesz);
+        Assert.assertEquals(7, bear.getKnocked());
+        System.out.println("[OK]");     
+    }
+    
+    /**
+     * Az update hatodik tesztje.
+     * A tesztnel a medve X koorinatajanak valtoztatasat nezem.
+     */
+    @Test
+    public void testUpdate6(){
+        System.out.print("Testig bear Update6...");//214
+        bear.getView().setX(140);
+        flokesz.getPlayer().setX(0);
+        Double value = bear.getPoz();
+        Assert.assertTrue(bear.toBackR(flokesz));
+        bear.update(flokesz);
+        Assert.assertEquals(8, bear.getKnocked());
+        bear.update(flokesz);
+        Assert.assertNotEquals(bear.getPoz(), value);
+        System.out.println("[OK]");     
+    }
     
     
     @After
