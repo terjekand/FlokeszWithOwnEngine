@@ -292,7 +292,7 @@ public class Test1 {
     public void testFlokeszKillCountInc(){
         System.out.println("Testing player Score Increaser...");
         
-        for(int i = 1; i < 50; i++){
+        for(int i = 1; i < 51; i++){
             flokesz.incKillCount();
             Assert.assertEquals(flokesz.getKillCount(), i);
             System.out.print("#");

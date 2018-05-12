@@ -17,6 +17,7 @@ package testForInput;
 
 import com.mycompany.flokeszownengine.BL.Input;
 import com.mycompany.flokeszownengine.BL.Character;
+import com.mycompany.flokeszownengine.BL.Menu;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -206,6 +207,19 @@ public class Test4 {
         Assert.assertEquals(value1, value2);
         
         System.out.println("[OK]");        
+    }
+    
+    /**
+     * Az atjutas tesztje.
+     */
+    @Test
+    public void testPass(){
+        System.out.print("Test character Pass Acces...");
+        Menu menu = new Menu();
+        flokesz.getPlayer().setX(menu.getTablaPoz());
+        input.tryToPass();
+        Assert.assertTrue(flokesz.getPass());
+        System.out.println("[OK]");    
     }
     
     @After

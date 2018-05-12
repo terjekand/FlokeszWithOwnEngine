@@ -78,14 +78,20 @@ public class Input {
                 i = 0;
     }
     /**
+     * A tovabbjutas ellenorzese.
+     */
+    public void tryToPass(){
+        Menu menu = new Menu();
+        if(menu.isNearTheTable(flokesz))
+            flokesz.setPass(true);
+    }
+    /**
     * A billentyuzet lenyomas erzekelese.
     */
     final EventHandler<KeyEvent> keyEventHandler =
             keyEvent -> {
-                if (keyEvent.getCode() == KeyCode.ENTER) {
-                Menu menu = new Menu();
-                if(menu.isNearTheTable(flokesz))
-                    flokesz.setPass(true);
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                 tryToPass();
             }
             if (keyEvent.getCode() == KeyCode.SPACE) {
                 doHitAction();

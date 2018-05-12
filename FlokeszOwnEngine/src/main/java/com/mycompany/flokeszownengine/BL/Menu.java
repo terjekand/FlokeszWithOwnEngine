@@ -23,29 +23,29 @@ import static java.lang.Math.abs;
  * @author kiss
  */
 public class Menu {
-    private int fogadoPoz, piacPoz, muhelyPoz, tablaPoz, tav, piacHossz = 775;
-    private boolean tablanal, muhelynel, piacnal, fogadonal;
+    private double tablaPoz, tav;
 
     public Menu(){
-        tav = 100;
-        fogadoPoz = 220;
-        piacPoz = 825;
-        tablaPoz = 1280;
-        muhelyPoz = 1430;
-        tablanal = false;
-        piacnal = false;
-        fogadonal = false;
-        muhelynel = false;
+        tav = 100.0;
+        tablaPoz = 1280.0;
     }
+    /**
+    * Vissza adja a tabla poziciojat a mapon.
+    * @return A tabla pozicioja.
+    */
+    public double getTablaPoz() {
+        return tablaPoz;
+    }
+    
+    
     /**
      * Az enter leutes a tablanal volt-e.
      * Ha igen akkor a karakter tovabb mehet a palyara
      * @param flokesz a karakterunk amely tovabbjut majd a palyara
      * @return logikai ertek ami vissza adja, hogy elkezdodhet-e a jatek.
      */
+    
     public boolean isNearTheTable(Character flokesz){
-        if(abs(flokesz.player.getX() - tablaPoz) <= tav)
-            return true;
-        return false;
+        return (abs(flokesz.player.getX() - tablaPoz) <= tav);
     }
 }
