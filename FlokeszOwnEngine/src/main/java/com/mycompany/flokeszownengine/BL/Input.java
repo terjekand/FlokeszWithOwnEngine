@@ -26,13 +26,13 @@ public class Input {
     public boolean A_Key, D_Key;
     Character flokesz;
     int i = 0;
-    Input(Character flokesz){
+    public Input(Character flokesz){
         this.flokesz = flokesz;
     }
     /**
     * Az utes mozdulat megvalositasaert felelos fuggveny.
     */
-    private void doHitAction(){
+    public void doHitAction(){
         if(flokesz.jobbra){
                     if(i == 0){
                         flokesz.fegyver.hitR();
@@ -58,20 +58,24 @@ public class Input {
                 }
     }
     /**
-    * A jobbrafutas megvalositasaert felelos fuggvveny.
+    * A balra futas megvalositasaert felelos fuggvveny.
     */
-    private void applyRightMovement(){
+    public void applyLeftMovement(){
+                flokesz.fegyver.weapon.setRotate(0);
                 flokesz.setX(flokesz.getPoz() - 15);
                 flokesz.jobbra = false;
                 flokesz.rest = false;
+                i = 0;
     }
     /**
-    * A balra futas megvalositasaert felelos fuggveny.
+    * A jobbra futas megvalositasaert felelos fuggveny.
     */
-    private void applyLeftMovement(){
+    public void applyRightMovement(){
+                flokesz.fegyver.weapon.setRotate(0);
                 flokesz.setX(flokesz.getPoz() + 15);
                 flokesz.jobbra = true;
                 flokesz.rest = false;
+                i = 0;
     }
     /**
     * A billentyuzet lenyomas erzekelese.
@@ -88,13 +92,10 @@ public class Input {
                 flokesz.setUtes(true);
             }
             if (keyEvent.getCode() == KeyCode.A) {
-                flokesz.fegyver.weapon.setRotate(0);
-                applyRightMovement();
-
+                applyLeftMovement();
             }
             if (keyEvent.getCode() == KeyCode.D) {
-                flokesz.fegyver.weapon.setRotate(0);
-                applyLeftMovement();
+                applyRightMovement();
 
             }
             if (keyEvent.getEventType() == KeyEvent.KEY_RELEASED){

@@ -50,6 +50,21 @@ public class Character {
 
     }
     /**
+     * a Jobbrameno valtozo erteket adja vissza.
+     * @return A jobbra menes erteke.
+     */
+    public boolean isJobbra() {
+        return jobbra;
+    }
+    /**
+     * Beallitja a jobbramenest.
+     * @param jobbra erre allitja be.
+     */
+    public void setJobbra(boolean jobbra) {
+        this.jobbra = jobbra;
+    }
+    
+    /**
      * Az utes statuszat adja vissza.
      * @return Vissza adja, hogy eppen utunk-e.
      */
