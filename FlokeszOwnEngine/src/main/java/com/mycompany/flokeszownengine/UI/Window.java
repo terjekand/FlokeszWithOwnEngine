@@ -62,6 +62,10 @@ public class Window{
      */
     Label scoreBox;
     /**
+     * A HighScoret tarolo label.
+     */
+    Label hsBox;
+    /**
      * Az eletet tarolo Label.
      */
     Label hpBox;
@@ -70,11 +74,17 @@ public class Window{
      * @param game egy GameEngine peldany, amivel hozza ferunk az osszes komponensehez.
      */
     public Window(GameEngine game){
+        hsBox = new Label("");
         scoreBox = new Label();
         hpBox = new Label("100");
         hpBox.setLayoutX(1280);
         hpBox.setTextFill(Color.RED);
         hpBox.setFont(Font.font ("Verdana", 40));
+        
+        hsBox.setLayoutY(100);
+        hsBox.setTextFill(Color.CORAL);
+        hsBox.setFont(Font.font ("Verdana", 40));
+        
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
@@ -84,7 +94,7 @@ public class Window{
         window.setTitle("TryOwnEngine");
         bg = new Pane();
         bg.setId("alap");
-        bg.getChildren().addAll(selectedImage, hpBox, game.flokesz.player, game.flokesz.fegyver.weapon);
+        bg.getChildren().addAll(selectedImage, hpBox, hsBox, game.flokesz.player, game.flokesz.fegyver.weapon);
         scene = new Scene(bg, 1366, 768);
         log.trace("A Window Created");
         window.show();
@@ -106,6 +116,14 @@ public class Window{
      */
     public Label getScoreBox(){
         return scoreBox;
+    }
+    
+    /**
+     * A HighScore Labelt ajda vissza.
+     * @return a HsBox.
+     */
+    public Label getHsBox(){
+        return hsBox;
     }
     /**
      * A stagehoz tartozo scenet adja vissza.

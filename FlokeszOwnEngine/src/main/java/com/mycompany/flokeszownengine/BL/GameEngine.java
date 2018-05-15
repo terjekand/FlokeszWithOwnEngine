@@ -66,14 +66,16 @@ public class GameEngine {
      * input -> peldanyositas.
      * billentyuzet kezeles beallitasa.
      */
-    public GameEngine(){
+    public GameEngine() throws Exception{
+        int HighScore = DB.getAllOrderedByScore().get(0).getScore();
         stage1 = new Stage1();
         flokesz = new Character();
         ablak = new Window(this);
+        ablak.getHpBox().setText("" + HighScore);
         startNanoTime = System.nanoTime();
         input = new Input(flokesz);
-         ablak.getScene().setOnKeyPressed(input.keyEventHandler);
-         log.trace("GameEngine constructor");
+        ablak.getScene().setOnKeyPressed(input.keyEventHandler);
+        log.trace("GameEngine constructor");
     }
     /**
     * Vissza adja az inputer felelos objektumot a jatekhoz.
