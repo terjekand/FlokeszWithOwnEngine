@@ -1,4 +1,5 @@
 package com.mycompany.flokeszownengine.UI;
+
 /*
  * Copyright 2018 Kiss Dávid.
  *
@@ -26,19 +27,20 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  *
  * @author kiss
  */
 @Slf4j
-public class Window{
+public class Window {
+
     /**
      * A megjeleniteshez hasznalt Stage.
      */
     private Stage window;
     /**
-     * Ez a hatter.
-     * Ezt hasznalom "root" kent, erre hozom letre a scenet.
+     * Ez a hatter. Ezt hasznalom "root" kent, erre hozom letre a scenet.
      */
     private Pane bg;
     /**
@@ -69,22 +71,26 @@ public class Window{
      * Az eletet tarolo Label.
      */
     Label hpBox;
+
     /**
      * Az osztaly konstruktora.
-     * @param game egy GameEngine peldany, amivel hozza ferunk az osszes komponensehez.
+     *
+     * @param game egy GameEngine peldany, amivel hozza ferunk az osszes
+     * komponensehez.
      */
-    public Window(GameEngine game){
-        hsBox = new Label("");
+    public Window(GameEngine game) {
+        hsBox = new Label("HighScore: " + game.HighScore);
         scoreBox = new Label();
         hpBox = new Label("100");
         hpBox.setLayoutX(1280);
         hpBox.setTextFill(Color.RED);
-        hpBox.setFont(Font.font ("Verdana", 40));
-        
-        hsBox.setLayoutY(100);
-        hsBox.setTextFill(Color.CORAL);
-        hsBox.setFont(Font.font ("Verdana", 40));
-        
+        hpBox.setFont(Font.font("Verdana", 30));
+
+        hsBox.setLayoutY(40);
+        hsBox.setLayoutX(0);
+        hsBox.setTextFill(Color.AZURE);
+        hsBox.setFont(Font.font("Verdana", 20));
+
         stageId = "menu";
         selectedImage = new ImageView();
         image1 = null;
@@ -102,57 +108,68 @@ public class Window{
         //window.setFullScreen(true);
 
     }
+
     /**
      * Eletet mutato label .
+     *
      * @return Azt a Labelt adja vissza amelyben a karater elete jelenul meg
      */
-    public Label getHpBox(){
+    public Label getHpBox() {
         return hpBox;
     }
+
     /**
-     * Scoreot mutato label.
-     * Ha megolunk egy medvet no a scoreunk
+     * Scoreot mutato label. Ha megolunk egy medvet no a scoreunk
+     *
      * @return Az a label ami a scoreunkat tartalmazza
      */
-    public Label getScoreBox(){
+    public Label getScoreBox() {
         return scoreBox;
     }
-    
+
     /**
      * A HighScore Labelt ajda vissza.
+     *
      * @return a HsBox.
      */
-    public Label getHsBox(){
+    public Label getHsBox() {
         return hsBox;
     }
+
     /**
      * A stagehoz tartozo scenet adja vissza.
+     *
      * @return A stagehoz tartozo scene
      */
     public Scene getScene() {
         return scene;
     }
+
     /**
      * A bg olyan csoport amihez minden tovabbi obj kapcsolodik.
+     *
      * @return Az alapertelmezett layout visszaadasa amire letrehoztam a scenet
      */
-    public Pane getBg(){
+    public Pane getBg() {
         return bg;
     }
+
     /**
      * Hatter beallitasa.
+     *
      * @param image imagera
      */
-    public void setView(Image image){
+    public void setView(Image image) {
         selectedImage.setImage(image);
     }
+
     /**
      * Kepernyo frissitese.
-     * @param flokesz 
+     *
+     * @param flokesz
      */
-    public void update(Character flokesz){
-            window.setScene(scene);
-
+    public void update(Character flokesz) {
+        window.setScene(scene);
 
     }
 

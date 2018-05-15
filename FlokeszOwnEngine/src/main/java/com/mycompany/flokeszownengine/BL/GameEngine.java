@@ -1,4 +1,5 @@
 package com.mycompany.flokeszownengine.BL;
+
 /*
  * Copyright 2018 Kiss Dávid.
  *
@@ -17,17 +18,20 @@ package com.mycompany.flokeszownengine.BL;
 import com.mycompany.flokeszownengine.DB.DataBase;
 import com.mycompany.flokeszownengine.DB.JPAEntity;
 import com.mycompany.flokeszownengine.UI.Window;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  *
  * @author kiss
  */
 @Slf4j
 public class GameEngine {
-    
+
     /**
      * Az adatbazis kezelo peldanyositasa.
      */
@@ -36,7 +40,7 @@ public class GameEngine {
      * JPA entitas letrehozasa.
      */
     private JPAEntity flokeszEntity;
-    
+
     /**
      * A jatek inditasanak ideje.
      */
@@ -58,71 +62,83 @@ public class GameEngine {
      */
     public Character flokesz;
     /**
-     * A GameEngine osztaly konstruktora.
-     * Stage1 -> peldanyositasa.
-     * flokesz -> peldanyositas.
-     * ablak -> peldanyositasa.
-     * startNanoTime -> a letrehozas idopontja.
-     * input -> peldanyositas.
-     * billentyuzet kezeles beallitasa.
+     * HighScore.
      */
-    public GameEngine() throws Exception{
-        int HighScore = DB.getAllOrderedByScore().get(0).getScore();
+    public int HighScore;
+    
+    /**
+     * A GameEngine osztaly konstruktora. Stage1 -> peldanyositasa. flokesz ->
+     * peldanyositas. ablak -> peldanyositasa. startNanoTime -> a letrehozas
+     * idopontja. input -> peldanyositas. billentyuzet kezeles beallitasa.
+     */
+    public GameEngine() {
+        
+        
+        
+        try {
+            HighScore = DB.getAllOrderedByScore().get(0).getScore();
+        } catch (Exception e) {
+            log.error("HighScore lekérdezési hiba!", e);
+            HighScore = 0;
+        }
+        
         stage1 = new Stage1();
         flokesz = new Character();
         ablak = new Window(this);
-        ablak.getHpBox().setText("" + HighScore);
         startNanoTime = System.nanoTime();
         input = new Input(flokesz);
         ablak.getScene().setOnKeyPressed(input.keyEventHandler);
         log.trace("GameEngine constructor");
     }
+
     /**
-    * Vissza adja az inputer felelos objektumot a jatekhoz.
-    * @return   a jatekmotorhoz tartozo input
-    */
+     * Vissza adja az inputer felelos objektumot a jatekhoz.
+     *
+     * @return a jatekmotorhoz tartozo input
+     */
     public Input getInput() {
         return input;
     }
+
     /**
-    * A jatek magja.
-    * Ezzel indul el a jatek, a benne talalhato AnimationTimer felelos a folyamatos futasert.
-    * Minden futas kozben torteno fuggoseg itt lesz levizsgalva. 
-    */
-    public void MainLoop(){
+     * A jatek magja. Ezzel indul el a jatek, a benne talalhato AnimationTimer
+     * felelos a folyamatos futasert. Minden futas kozben torteno fuggoseg itt
+     * lesz levizsgalva.
+     */
+    public void MainLoop() {
         log.trace("GameEngine MainLoop -> Called");
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 double t = (currentNanoTime - startNanoTime) / 1000000000.0;
-                if(flokesz.getHp() > 0){
+                if (flokesz.getHp() > 0) {
                     flokesz.update();
-                ablak.update(flokesz);
-                ablak.getScene().setOnKeyPressed(input.keyEventHandler);
-                ablak.getScene().setOnKeyReleased(input.keyEventHandler);
-                flokesz.rest = true;
-                if(flokesz.getPass()){
-                    ablak.setView(stage1.getImage());
-                    flokesz.setPass(false);
-                    log.trace("Passed section: Character.pass = false");
-                    stage1.setRun(true);
-                    log.trace("Passed section: Set stage1.run = true");
-                    ablak.getBg().getChildren().add(stage1.getBear().getView());
-                    log.trace("Passed section: Add Bear ImageView to scene");
-                    ablak.getBg().getChildren().add(ablak.getScoreBox());
-                    log.trace("Passed section: Add scorebox to scene");
-                    ablak.getScoreBox().setText("0");
-                    ablak.getScoreBox().setTextFill(Color.WHITE);
-                    ablak.getScoreBox().setFont(Font.font ("Verdana", 40));
-                    log.trace("Character Passed -> Stage1 Initialized");
-                }
-                if(stage1.getRun()){
-                        if(flokesz.getBacked() > 0){
+                    ablak.update(flokesz);
+                    ablak.getScene().setOnKeyPressed(input.keyEventHandler);
+                    ablak.getScene().setOnKeyReleased(input.keyEventHandler);
+                    flokesz.rest = true;
+                    if (flokesz.getPass()) {
+                        ablak.setView(stage1.getImage());
+                        flokesz.setPass(false);
+                        log.trace("Passed section: Character.pass = false");
+                        stage1.setRun(true);
+                        log.trace("Passed section: Set stage1.run = true");
+                        ablak.getBg().getChildren().add(stage1.getBear().getView());
+                        log.trace("Passed section: Add Bear ImageView to scene");
+                        ablak.getBg().getChildren().add(ablak.getScoreBox());
+                        log.trace("Passed section: Add scorebox to scene");
+                        ablak.getScoreBox().setText("0");
+                        ablak.getScoreBox().setTextFill(Color.WHITE);
+                        ablak.getScoreBox().setFont(Font.font("Verdana", 40));
+                        log.trace("Character Passed -> Stage1 Initialized");
+                    }
+                    if (stage1.getRun()) {
+                        if (flokesz.getBacked() > 0) {
                             ablak.getHpBox().setText("" + flokesz.getHp());
                             log.trace("Character Hp Box Updated");
-                            
+
                         }
-                            
-                        if(stage1.getBear().getHealth() <= 0){
+
+                        if (stage1.getBear().getHealth() <= 0) {
                             ablak.getBg().getChildren().remove(stage1.getBear().getView());
                             stage1.initBear();
                             log.trace("Run section: Init Bear");
@@ -134,25 +150,28 @@ public class GameEngine {
                         stage1.update(flokesz);
                         log.trace("GameEngine -> Stage1 is running");
                     }
-                }
-                else{
+                } else {
                     //TODO: GAME OVER
                     ablak.getBg().setOpacity(0.7);
-                    log.trace("Set Opacity");
+                    log.trace("Set Opacity - OK");
                     flokeszEntity = new JPAEntity();
                     flokeszEntity.setScore(flokesz.getKillCount());
-                    log.trace("Save player score");
+                    log.trace("Set player score - OK");
+                    
                     try {
+                        
                         DB.save(flokeszEntity);
+                        log.trace("Save player score - OK");
+                        
                     } catch (IllegalArgumentException ex) {
-                        log.error("Exception: ", ex);
+                        log.error("Mentés HIBA. ", ex);
                     } catch (Exception ex) {
-                        log.error("Exception: ", ex);
+                        log.error("JPA hiba! ", ex);
                     }
                     log.trace("Game over");
+                    this.stop();
                 }
-                
-                
+
             }
         }.start();
 

@@ -18,16 +18,19 @@ package com.mycompany.flokeszownengine.DB;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author Dávid
  */
 @Slf4j
 public class DataBase {
+
     /**
      * Osztalyelem peldanyositasa.
      */
@@ -169,9 +172,9 @@ public class DataBase {
 //---------------------------------------------------------
 //---------------------NamedQueries------------------------
 //---------------------------------------------------------
-
     /**
      * Az osszes score lekerese csokkeno sorrendben.
+     *
      * @return Scoreokat tartalmazo lista
      * @throws IllegalStateException Ha nem jo az adatbazis.
      * @throws Exception Egyeb kivietel.
@@ -181,22 +184,37 @@ public class DataBase {
         if (!connected()) {
             throw new IllegalStateException("Nincs adatbázis-kapcsolat!");
         }
+
+        try {
+            Query query = em.createNamedQuery("JPAEntity.getAllOrderedByScore", JPAEntity.class);
+
+            //A "...uses unchecked or unsafe operations" warning elkerülése, itt csak SampleJPAEntity lista jöhet vissza
             @SuppressWarnings("unchecked")
-            List<JPAEntity> lista = (List<JPAEntity>) em.createNamedQuery("JPAEntity.getAllOrderedByScore").getResultList();
-            return lista;
+            List<JPAEntity> entitys = query.getResultList();
+
+            return entitys;
+
+        } catch (NoResultException e) {
+            return null;
+        } catch (PersistenceException e) {
+            log.error("JPA lekérdezési hiba!");
+            throw new Exception("JPA hiba!", e);
+        }
     }
+
     /**
      * Vissza adja a HighScore-okat tartalmazo listat.
+     *
      * @return Azert lista, mert egyszerre tobb ugyan olyan score lehet.
      * @throws IllegalStateException ha adatbazis kapcsolat nincs.
      * @throws Exception egyeb kivetelek elkapasa
      */
-    public List<Integer> getHighScore () throws  IllegalStateException, Exception{
-         if (!connected()) {
+    public List<Integer> getHighScore() throws IllegalStateException, Exception {
+        if (!connected()) {
             throw new IllegalStateException("Nincs adatbázis-kapcsolat!");
         }
-         @SuppressWarnings("unchecked")
-         List<Integer> lista = (List<Integer>) em.createNamedQuery("JPAEntity.getHighScore").getResultList();
-         return lista;
+        @SuppressWarnings("unchecked")
+        List<Integer> lista = (List<Integer>) em.createNamedQuery("JPAEntity.getHighScore").getResultList();
+        return lista;
     }
 }

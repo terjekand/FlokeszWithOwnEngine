@@ -26,20 +26,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 /**
- * 
+ *
  * @author Dávid
  */
-
 @Entity
 @Table(name = "SCORES", schema = "MY_SCHEMA_NAME")
 
 @NamedQueries({
     @NamedQuery(name = "JPAEntity.getAllOrderedByScore", query = "SELECT e FROM JPAEntity e ORDER BY e.score DESC")
-        ,
-    @NamedQuery(name = "JPAEntity.getHighScore", query = "SELECT MAX(e.score) FROM JPAEntity e")
 })
 @Data               //fontos, JPA használja a Gettereket, Settereket
 @EqualsAndHashCode  //mégfontosabb, hiszen a JPA ezeken keresztül tud összehasonlítani 2 entitást
@@ -61,4 +57,3 @@ public class JPAEntity implements Serializable {
     private Integer score;
 
 }
-
