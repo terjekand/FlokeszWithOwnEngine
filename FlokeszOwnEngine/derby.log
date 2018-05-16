@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed May 16 09:05:32 CEST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0163-67c4-acc0-000005959cb0 
+on database directory C:\Users\Dávid\Desktop\Dont clinck me\NetBeansProjects\FlokeszWithOwnEngine\FlokeszOwnEngine\F-DB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/D%c3%a1vid/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_171-b11
+user.dir=C:\Users\Dávid\Desktop\Dont clinck me\NetBeansProjects\FlokeszWithOwnEngine\FlokeszOwnEngine
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
