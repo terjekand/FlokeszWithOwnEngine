@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Flokesz</name>
-    <description></description>
+    <description>Egy kétdimenziós pixelgrafikus játék.</description>
     <url>https://github.com/kissdavid0506/FlokeszWithOwnEngine</url>
 
     <!-- https://maven.apache.org/pom.html#Organization -->

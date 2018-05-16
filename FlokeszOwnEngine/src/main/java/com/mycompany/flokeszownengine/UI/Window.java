@@ -166,7 +166,7 @@ public class Window {
     /**
      * Kepernyo frissitese.
      *
-     * @param flokesz
+     * @param flokesz a karakter alapjan.
      */
     public void update(Character flokesz) {
         window.setScene(scene);
